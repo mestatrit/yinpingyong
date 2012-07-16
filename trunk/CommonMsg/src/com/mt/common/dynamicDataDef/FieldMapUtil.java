@@ -1,16 +1,22 @@
 package com.mt.common.dynamicDataDef;
 
-import com.mt.common.xml.WAX;
-import com.mt.common.xml.WAX.Version;
-import com.mt.common.xml.XMLUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.w3c.dom.*;
-
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import org.apache.log4j.PropertyConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import com.mt.common.xml.WAX;
+import com.mt.common.xml.XMLUtil;
+import com.mt.common.xml.WAX.Version;
 
 /**
  * 一些FieldMap的工具方法
@@ -430,7 +436,9 @@ public class FieldMapUtil {
     }
 
     static public void main(String[] args) {
-        String xml = "";
+    	PropertyConfigurator.configure("etc/log4j.properties");
+    	
+    	String xml = "";
         xml = FieldMapUtil.createXMLString(new FieldMap(""));
         System.err.println(xml);
         xml = FieldMapUtil.createXMLString(new FieldMapSet(""));
@@ -466,10 +474,7 @@ public class FieldMapUtil {
             System.err.println(s);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-            ;
         }
-
-
     }
 
     static private void printFieldMapNode(FieldMapNode node) {
