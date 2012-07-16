@@ -440,7 +440,8 @@ public class FieldMapNode extends FieldMap {
      *
      * @param comparator
      */
-    public void sort(Comparator comparator, String lName) {
+    @SuppressWarnings("unchecked")
+	public void sort(Comparator comparator, String lName) {
         int count = getChildCount();
         FieldMapNode[] nodes = new FieldMapNode[count];
         for (int i = 0; i < count; i++) {
@@ -459,7 +460,8 @@ public class FieldMapNode extends FieldMap {
      *
      * @param comparator
      */
-    public void sort(Comparator comparator) {
+    @SuppressWarnings("unchecked")
+	public void sort(Comparator comparator) {
         sort(comparator, null);
     }
 
