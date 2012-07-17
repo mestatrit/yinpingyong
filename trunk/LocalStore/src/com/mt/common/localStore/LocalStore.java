@@ -11,8 +11,6 @@ import com.mt.common.dynamicDataDef.FieldMapUtil;
 import com.mt.common.xml.XMLUtil;
 import com.thoughtworks.xstream.XStream;
 import org.apache.commons.io.FileUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.lang.reflect.Field;
@@ -71,7 +69,7 @@ public class LocalStore {
      * 序列化到简洁文本的日期格式
      */
     static private final DateFormat TxtDateFormat = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
-    static private final Logger logger = LoggerFactory.getLogger(LocalStore.class);
+    
 
     /**
      * 配置全局路径
@@ -126,7 +124,7 @@ public class LocalStore {
      */
     static public Object fromLocalXMLData(Class classV, String filePath) {
         try {
-            logger.info("fromLocalXMLData_filePath:" + filePath);
+            System.out.println("fromLocalXMLData_filePath:" + filePath);
             if (classV.isAssignableFrom(FieldMap.class)) {
                 String rs = FileUtils.readFileToString(new File(filePath), EncodingDef);
                 return FieldMapUtil.createFieldMap(XMLUtil.createDocument(rs).getDocumentElement());
@@ -143,7 +141,7 @@ public class LocalStore {
         } catch (FileNotFoundException ex) {
             return null;
         } catch (Exception ex) {
-            logger.error("读取本地数据失败", ex);
+            System.err.println("读取本地数据失败"+ex.getMessage());
             throw new RuntimeException("读取本地数据失败", ex);
         }
     }
@@ -156,7 +154,7 @@ public class LocalStore {
      */
     static public void toLocalXMLData(Object data, String filePath) {
         try {
-            logger.info("toLocalXMLData_filePath:" + filePath);
+            System.out.println("toLocalXMLData_filePath:" + filePath);
             if (data instanceof FieldMap) {
                 if (data instanceof FieldMapNode) {
                     FileUtils.writeStringToFile(new File(filePath), FieldMapUtil.createXMLString((FieldMapNode) data), EncodingDef);
@@ -171,7 +169,7 @@ public class LocalStore {
                 xstream.toXML(data, new OutputStreamWriter(new FileOutputStream(filePath), EncodingDef));
             }
         } catch (Exception ex) {
-            logger.error("保存数据到本地失败", ex);
+            System.err.println("保存数据到本地失败"+ex.getMessage());
             throw new RuntimeException("保存数据到本地失败", ex);
         }
     }
@@ -222,14 +220,14 @@ public class LocalStore {
         } catch (FileNotFoundException ex) {
             return null;
         } catch (Exception ex) {
-            logger.error("读取数据发生异常", ex);
+            System.err.println("读取数据发生异常"+ex.getMessage());
             throw new RuntimeException(ex);
         } finally {
             if (reader != null) {
                 try {
                     reader.close();
                 } catch (IOException ex) {
-                    logger.error("关闭输入流发生异常", ex);
+                    System.err.println("关闭输入流发生异常"+ex.getMessage());
                 }
             }
         }
@@ -253,14 +251,14 @@ public class LocalStore {
                 writer.write(convertObjectToText(obj, fs).toString());
             }
         } catch (Exception ex) {
-            logger.error("输出BondDef发生异常", ex);
+            System.err.println("输出BondDef发生异常"+ex.getMessage());
             throw new RuntimeException(ex);
         } finally {
             if (writer != null) {
                 try {
                     writer.close();
                 } catch (IOException ex) {
-                    logger.error("关闭输出流发生异常", ex);
+                    System.err.println("关闭输出流发生异常"+ex.getMessage());
                 }
             }
         }
@@ -474,7 +472,7 @@ public class LocalStore {
             con = DriverManager.getConnection(url);
             return con;
         } catch (Exception ex) {
-            logger.error("获得数据库连接失败", ex);
+            System.err.println("获得数据库连接失败"+ ex.getMessage());
             throw new RuntimeException(ex);
         }
     }
@@ -540,7 +538,7 @@ public class LocalStore {
                     rs.close();
                 }
             } catch (Exception ex) {
-                logger.error("关闭ResultSet失败", ex);
+                System.err.println("关闭ResultSet失败"+ex.getMessage());
             }
         }
     }
@@ -566,7 +564,7 @@ public class LocalStore {
                     rs.close();
                 }
             } catch (Exception ex) {
-                logger.error("关闭ResultSet失败", ex);
+                System.err.println("关闭ResultSet失败"+ex.getMessage());
             }
         }
     }
@@ -603,7 +601,7 @@ public class LocalStore {
                     dao.close();
                 }
             } catch (Exception sex) {
-                logger.error("关闭数据库连接发生异常", sex);
+                System.err.println("关闭数据库连接发生异常"+sex.getMessage());
             }
         }
     }
@@ -732,7 +730,7 @@ public class LocalStore {
                     dao.close();
                 }
             } catch (Exception sex) {
-                logger.error("关闭数据库连接发生异常", sex);
+                System.err.println("关闭数据库连接发生异常"+sex.getMessage());
             }
         }
     }
@@ -748,7 +746,7 @@ public class LocalStore {
                     dao.close();
                 }
             } catch (Exception sex) {
-                logger.error("关闭数据库连接发生异常", sex);
+                System.err.println("关闭数据库连接发生异常"+sex.getMessage());
             }
         }
     }
