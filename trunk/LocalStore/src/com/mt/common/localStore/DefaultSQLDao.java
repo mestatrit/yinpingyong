@@ -5,8 +5,6 @@
 package com.mt.common.localStore;
 
 import com.mt.common.dynamicDataDef.FieldMap;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
@@ -28,14 +26,13 @@ public class DefaultSQLDao implements SQLDao {
 
     private Connection con = null;
     private Statement sttm = null;
-    private final Logger logger = LoggerFactory.getLogger(DefaultSQLDao.class);
 
     public DefaultSQLDao(Connection con) {
         try {
             this.con = con;
             this.sttm = con.createStatement();
         } catch (Exception ex) {
-            logger.error("创建SimpleSQLDAO失败", ex);
+            System.err.println("创建SimpleSQLDAO失败"+ex.getMessage());
             throw new RuntimeException(ex);
         }
     }
@@ -116,7 +113,7 @@ public class DefaultSQLDao implements SQLDao {
                     rs = null;
                 }
             } catch (Exception ex) {
-                logger.error("关闭ResultSet失败", ex);
+                System.err.println("关闭ResultSet失败"+ex.getMessage());
             }
         }
     }
@@ -129,7 +126,7 @@ public class DefaultSQLDao implements SQLDao {
             sttm = null;
             con = null;
         } catch (Exception ex) {
-            logger.error("关闭数据库连接失败", ex);
+            System.err.println("关闭数据库连接失败"+ex.getMessage());
             throw new RuntimeException(ex);
         }
     }
@@ -192,7 +189,7 @@ public class DefaultSQLDao implements SQLDao {
             }
             sqlBuilder.append(" WHERE ").append(fName).append('=').append('?');
             String sql = sqlBuilder.toString();
-            logger.info("生成的SQL:\n{}", sql);
+            System.out.println("生成的SQL:\n{}"+sql);
             pst = con.prepareStatement(sql);
             for (Object obj : data) {
                 Field ff = null;
@@ -215,7 +212,7 @@ public class DefaultSQLDao implements SQLDao {
                     pst.close();
                     pst = null;
                 } catch (Exception ex) {
-                    logger.error("关闭PreparedStatement失败", ex);
+                    System.err.println("关闭PreparedStatement失败"+ex.getMessage());
                     throw new RuntimeException(ex);
                 }
             }
@@ -250,7 +247,7 @@ public class DefaultSQLDao implements SQLDao {
             }
             sqlBuilder.append(") VALUES(").append(values).append(')');
             String sql = sqlBuilder.toString();
-            logger.info("生成的SQL:\n{}", sql);
+            System.out.println("生成的SQL:\n{}"+sql);
             pst = con.prepareStatement(sql);
             for (Object obj : data) {
                 for (int i = 0; i < fs.length; i++) {
@@ -270,7 +267,7 @@ public class DefaultSQLDao implements SQLDao {
                     pst.close();
                     pst = null;
                 } catch (Exception ex) {
-                    logger.error("关闭PreparedStatement失败", ex);
+                    System.err.println("关闭PreparedStatement失败"+ex);
                     throw new RuntimeException(ex);
                 }
             }
@@ -330,7 +327,7 @@ public class DefaultSQLDao implements SQLDao {
         }
         sqlBuilder.append(')');
         String sql = sqlBuilder.toString();
-        logger.info("生成的SQL:\n{}", sql);
+        System.out.println("生成的SQL:\n{}"+sql);
         return executeSQL(sql);
     }
 
