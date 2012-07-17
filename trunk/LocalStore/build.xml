@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     2012-7-17 上午10:48:20                                                        
+
+     project    
+     LocalStore
+                   
+     Ryan                                                                
+     ====================================================================== -->
+<project name="project" default="dist">
+	<description>
+            LocalStore Project
+    </description>
+
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="target" value="1.6" />
+	<property name="source" value="1.6" />
+	<!-- 编译后class文件存放路径-->
+	<property name="build.class.dir" value="${basedir}/build" />
+	<property name="lib.dir" value="${basedir}/lib" />
+	<property name="dist.dir" value="${basedir}/dist" />
+
+	<!--定义编译需要的jar包存放路径  -->
+	<path id="compile.classpath">
+		<fileset dir="${lib.dir}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<!-- ================================= 
+          target: dist              
+         ================================= -->
+	<target name="dist" depends="jar" description="LocalStore Project.">
+		<mkdir dir="${basedir}/dist/lib" />
+		<copy todir="${basedir}/dist/lib">
+			<fileset dir="${basedir}/lib" />
+		</copy>
+		<move file="LocalStore.jar" todir="${basedir}/dist/lib" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+	          target: JavaVersion                      
+	         - - - - - - - - - - - - - - - - - -->
+	<target name="JavaVersion" if="ant.java.version">
+		<echo message="Java Version: ${ant.java.version}" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+	          target: clean                      
+	         - - - - - - - - - - - - - - - - - -->
+	<target name="clean">
+		<delete dir="${basedir}/build" />
+		<delete dir="${basedir}/dist" />
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+	          target: compile                      
+	         - - - - - - - - - - - - - - - - - -->
+	<target name="compile" depends="clean,JavaVersion">
+		<mkdir dir="${basedir}/build/classes" />
+		<javac srcdir="${basedir}/src" debuglevel="${debuglevel}" source="${source}" target="${target}" destdir="${basedir}/build/classes">
+			<classpath refid="compile.classpath">
+			</classpath>
+		</javac>
+	</target>
+
+	<!-- - - - - - - - - - - - - - - - - - 
+		       target: jar                      
+	         - - - - - - - - - - - - - - - - - -->
+	<target name="jar" depends="compile">
+		<jar destfile="LocalStore.jar" basedir="${basedir}/build/classes">
+		</jar>
+	</target>
+</project>
