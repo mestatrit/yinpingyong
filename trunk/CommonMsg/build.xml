@@ -32,12 +32,8 @@
          ================================= -->
 	<target name="dist" depends="jar" description="CommonMsg Project.">
 		<mkdir dir="${basedir}/dist/lib" />
-		<mkdir dir="${basedir}/dist/etc" />
 		<copy todir="${basedir}/dist/lib">
 			<fileset dir="${basedir}/lib" />
-		</copy>
-		<copy todir="${basedir}/dist/etc">
-			<fileset dir="${basedir}/etc" />
 		</copy>
 		<move file="CommonMsg.jar" todir="${basedir}/dist/lib" />
 	</target>
