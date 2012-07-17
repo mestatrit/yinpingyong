@@ -60,7 +60,7 @@ public class PinyinHandler {
                     result.append(charValue);
                 }
             } catch (BadHanyuPinyinOutputFormatCombination e) {
-                System.out.println("汉字转拼音出现异常"+e.getMessage());
+                System.err.println("汉字转拼音出现异常"+e.getMessage());
                 continue;
             }
         }
@@ -118,7 +118,7 @@ public class PinyinHandler {
                     }
                 }
             } catch (BadHanyuPinyinOutputFormatCombination e) {
-                System.out.println("汉字转拼音出现异常"+e.getMessage());
+                System.err.println("汉字转拼音出现异常"+e.getMessage());
                 continue;
             }
         }
@@ -191,7 +191,7 @@ public class PinyinHandler {
                     }
                 }
             } catch (BadHanyuPinyinOutputFormatCombination e) {
-                System.out.println("汉字转拼音出现异常"+e.getMessage());
+                System.err.println("汉字转拼音出现异常"+e.getMessage());
                 continue;
             }
         }
