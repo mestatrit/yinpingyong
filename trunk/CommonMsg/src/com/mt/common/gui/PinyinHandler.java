@@ -4,8 +4,6 @@ import net.sourceforge.pinyin4j.PinyinHelper;
 import net.sourceforge.pinyin4j.format.HanyuPinyinOutputFormat;
 import net.sourceforge.pinyin4j.format.HanyuPinyinToneType;
 import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombination;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +14,6 @@ import java.util.List;
  * @author hanhui
  */
 public class PinyinHandler {
-
-    static private final Logger logger = LoggerFactory.getLogger(PinyinHandler.class);
 
     static private HanyuPinyinOutputFormat hf = new HanyuPinyinOutputFormat();
 
@@ -64,7 +60,7 @@ public class PinyinHandler {
                     result.append(charValue);
                 }
             } catch (BadHanyuPinyinOutputFormatCombination e) {
-                logger.error("汉字转拼音出现异常", e);
+                System.out.println("汉字转拼音出现异常"+e.getMessage());
                 continue;
             }
         }
@@ -122,7 +118,7 @@ public class PinyinHandler {
                     }
                 }
             } catch (BadHanyuPinyinOutputFormatCombination e) {
-                logger.error("汉字转拼音出现异常", e);
+                System.out.println("汉字转拼音出现异常"+e.getMessage());
                 continue;
             }
         }
@@ -195,7 +191,7 @@ public class PinyinHandler {
                     }
                 }
             } catch (BadHanyuPinyinOutputFormatCombination e) {
-                logger.error("汉字转拼音出现异常", e);
+                System.out.println("汉字转拼音出现异常"+e.getMessage());
                 continue;
             }
         }
