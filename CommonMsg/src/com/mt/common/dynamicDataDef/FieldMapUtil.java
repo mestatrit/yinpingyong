@@ -4,10 +4,6 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import org.apache.log4j.PropertyConfigurator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
@@ -25,7 +21,6 @@ import com.mt.common.xml.WAX.Version;
  */
 public class FieldMapUtil {
 
-    private static Logger logger = LoggerFactory.getLogger(FieldMapUtil.class);
     /**
      * 以Element的方式构建FieldMap的XML
      */
@@ -436,7 +431,6 @@ public class FieldMapUtil {
     }
 
     static public void main(String[] args) {
-    	PropertyConfigurator.configure("etc/log4j.properties");
     	
     	String xml = "";
         xml = FieldMapUtil.createXMLString(new FieldMap(""));
@@ -473,7 +467,7 @@ public class FieldMapUtil {
             String s = createXMLString(node);
             System.err.println(s);
         } catch (Exception e) {
-            logger.error(e.getMessage(), e);
+           //System.out.println(e.getMessage());
         }
     }
 

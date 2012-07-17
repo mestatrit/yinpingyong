@@ -15,7 +15,11 @@ package com.mt.common.dynamicDataDef;
  */
 public class FieldObjectDemo extends FieldObject {
 
-    public Field id;
+    public FieldObjectDemo() throws IllegalArgumentException, IllegalAccessException {
+		super();
+	}
+
+	public Field id;
 
     public Field name;
 
@@ -23,7 +27,7 @@ public class FieldObjectDemo extends FieldObject {
 
     public String noFType;
 
-    static public void main(String args[]) {
+    static public void main(String args[]) throws IllegalArgumentException, IllegalAccessException {
         FieldObjectDemo fDemo = new FieldObjectDemo();
         fDemo.id.setValue("060001");
         fDemo.name.setValue("06国债01");

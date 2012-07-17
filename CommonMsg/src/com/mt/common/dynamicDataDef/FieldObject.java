@@ -4,9 +4,6 @@
  */
 package com.mt.common.dynamicDataDef;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,23 +19,16 @@ import java.util.List;
  */
 public abstract class FieldObject {
 
-    private Logger logger = LoggerFactory.getLogger(FieldObject.class);
-
     private String name;
 
-    public FieldObject() {
-        try {
-            java.lang.reflect.Field[] dfs = this.getClass().getDeclaredFields();
-            for (java.lang.reflect.Field ff : dfs) {
-                if (ff.getType().isAssignableFrom(Field.class)) {
-                    if (ff.get(this) == null) {
-                        ff.set(this, new Field(ff.getName(), null));
-                    }
+    public FieldObject() throws IllegalArgumentException, IllegalAccessException{
+    	java.lang.reflect.Field[] dfs = this.getClass().getDeclaredFields();
+        for (java.lang.reflect.Field ff : dfs) {
+            if (ff.getType().isAssignableFrom(Field.class)) {
+                if (ff.get(this) == null) {
+                    ff.set(this, new Field(ff.getName(), null));
                 }
             }
-        } catch (Exception e) {
-            logger.error(e.getMessage(), e);
-            ;
         }
     }
 
@@ -50,46 +40,36 @@ public abstract class FieldObject {
         return this.name;
     }
 
-    public List<Field> toFieldList() {
+    public List<Field> toFieldList() throws IllegalArgumentException, IllegalAccessException {
         List<Field> rsList = new ArrayList<Field>();
-        try {
-            java.lang.reflect.Field[] dfs = this.getClass().getDeclaredFields();
-            for (java.lang.reflect.Field ff : dfs) {
-                if (ff.getType().isAssignableFrom(Field.class)) {
-                    rsList.add((Field) ff.get(this));
-                }
+        java.lang.reflect.Field[] dfs = this.getClass().getDeclaredFields();
+        for (java.lang.reflect.Field ff : dfs) {
+            if (ff.getType().isAssignableFrom(Field.class)) {
+                rsList.add((Field) ff.get(this));
             }
-        } catch (Exception e) {
-            logger.error(e.getMessage(), e);
-            ;
         }
         return rsList;
     }
 
-    public FieldMap toFieldMap() {
+    public FieldMap toFieldMap() throws IllegalArgumentException, IllegalAccessException {
         return new FieldMap(name == null ? this.getClass().getSimpleName() : name).addFieldList(toFieldList());
     }
 
-    public void setFieldList(List<Field> fList) {
-        try {
-            java.lang.reflect.Field[] dfs = this.getClass().getDeclaredFields();
-            for (java.lang.reflect.Field ff : dfs) {
-                if (ff.getType().isAssignableFrom(Field.class)) {
-                    String ffName = ff.getName();
-                    for (Field f : fList) {
-                        if (f.getName().equals(ffName)) {
-                            ff.set(this, f);
-                        }
+    public void setFieldList(List<Field> fList) throws IllegalArgumentException, IllegalAccessException {
+    	java.lang.reflect.Field[] dfs = this.getClass().getDeclaredFields();
+        for (java.lang.reflect.Field ff : dfs) {
+            if (ff.getType().isAssignableFrom(Field.class)) {
+                String ffName = ff.getName();
+                for (Field f : fList) {
+                    if (f.getName().equals(ffName)) {
+                        ff.set(this, f);
                     }
                 }
             }
-        } catch (Exception e) {
-            logger.error(e.getMessage(), e);
-            ;
         }
     }
 
-    public void setFieldMap(FieldMap fm) {
+    public void setFieldMap(FieldMap fm) throws IllegalArgumentException, IllegalAccessException {
         this.name = fm.getName();
         setFieldList(fm.toFieldList());
     }

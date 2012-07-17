@@ -5,8 +5,6 @@ import com.mt.common.dynamicDataDef.FieldMapNode;
 import com.mt.common.dynamicDataDef.FieldMapSet;
 import com.mt.common.dynamicDataDef.FieldMapUtil;
 import com.mt.common.xml.XMLUtil;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -20,8 +18,6 @@ import org.w3c.dom.NodeList;
  * To change this template use File | Settings | File Templates.
  */
 public class CommonMsg {
-
-    private final Logger logger = LoggerFactory.getLogger(CommonMsg.class);
 
     /**
      * 超时错误
@@ -282,7 +278,6 @@ public class CommonMsg {
             try {
                 xmlDocument = XMLUtil.createDocument(msg);
             } catch (Throwable e) {
-                logger.error(e.getMessage(), e);
                 return;
             }
 
@@ -316,7 +311,6 @@ public class CommonMsg {
                 }
             }
         } catch (Throwable t) {
-            logger.error("setMsg", t);
             setErrorMsg(t.getMessage());
         }
     }
