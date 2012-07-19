@@ -187,6 +187,9 @@ class TableModel extends AbstractTableModel {
 		this.fireTableCellUpdated(row, col);
 	}
 
+	/**
+	 * 显示表格列名
+	 */
 	public String getColumnName(int col) {
 		return titleName[col];
 	}
