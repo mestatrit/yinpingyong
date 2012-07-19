@@ -1,6 +1,8 @@
 package com.mt.common.settingManager;
 
 import com.mt.common.dynamicDataDef.FieldMapSet;
+import com.mt.common.localStore.LocalStore;
+import com.mt.common.localStore.StorePath;
 
 /**
  * 设置数据管理器，系统中大多功能各种配置信息保存读取都会用到这个管理器
