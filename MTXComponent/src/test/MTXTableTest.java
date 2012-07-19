@@ -101,12 +101,13 @@ public class MTXTableTest {
 
 	private void addData() {
 		model.getContent().add(new User(model.getContent().size() + 1, "李逵", true, "19"));
-		table.updateUI();
+		//通知所有侦听器，表的所有行单元格值可能已更改
+		model.fireTableDataChanged();
 	}
 
 	private void removeData() {
 		model.getContent().clear();
-		table.updateUI();
+		model.fireTableDataChanged();
 	}
 
 	private void saveData() {
@@ -151,7 +152,7 @@ class TableModel extends AbstractTableModel {
 	public TableModel() {
 		
 	}
-
+	
 	/**
 	 * 设置单元格是否可修改
 	 */
