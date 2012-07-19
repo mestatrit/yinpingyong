@@ -149,7 +149,7 @@ class TableModel extends AbstractTableModel {
 	}
 
 	public TableModel() {
-
+		
 	}
 
 	/**
