@@ -80,7 +80,10 @@ public class MTXTable extends JTable {
         this.isAuto = isAuto;
         this.isSort = isSort;
 
-        tce = new TableCopyExporter(this);
+        /**
+         * 启用导入、导出等功能
+         */
+        //tce = new TableCopyExporter(this);
 
         //配置默认的表现器
         SimpleTableCellRenderer left = new SimpleTableCellRenderer(SwingConstants.LEFT);
