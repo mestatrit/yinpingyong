@@ -2,7 +2,6 @@ package com.mt.print;
 
 import com.mt.common.gui.ComponentResizer;
 import com.mt.common.gui.MTXComponent.MTXTreeTable;
-import com.mt.core.functionDef.ViewFunction;
 import com.mt.exception.MTException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,73 +30,70 @@ public class SimpleTablePrinter {
     }
 
     static public void print(MTXTreeTable table) {
-        ViewFunction vf = null;
+//        ViewFunction vf = null;
         try {
             JTable t = table.getWholeTable();
-            vf = ViewFunction.getViewFunction(table);
-            print(vf, t);
+            //vf = ViewFunction.getViewFunction(table);
+            print(t);
         } catch (Throwable t) {
             logger.error("PrinterException", t);
-            JOptionPane.showMessageDialog(vf,
-                    "打印失败\n" + MTException.getExceptionMsg(t));
+            JOptionPane.showMessageDialog(table, "打印失败\n" + MTException.getExceptionMsg(t));
         }
 
     }
 
-    static private void print(ViewFunction vf, JTable table) throws PrinterException {
-        String t = vf != null ? vf.getViewTitle() : "Page";
-        t = (t == null || t.equals("")) ? "Page" : t;
-        MessageFormat headerFormat = new MessageFormat(t);
-        MessageFormat footerFormat = new MessageFormat("- {0} -");
-        int cCount = 0;
-        TableColumnModel tcm = table.getColumnModel();
-        for (int i = 0; i < tcm.getColumnCount(); i++) {
-            if (tcm.getColumn(i).getWidth() > 0) {
-                cCount++;
-            }
-        }
-        HashPrintRequestAttributeSet hrs = new HashPrintRequestAttributeSet();
-        if (cCount > 11) {
-            hrs.add(OrientationRequested.LANDSCAPE);
-        }
-        table.print(JTable.PrintMode.FIT_WIDTH, headerFormat,
-                footerFormat, false, hrs, false);
-    }
+//    static private void print(JTable table) throws PrinterException {
+//        String t = "Page";
+//        t = (t == null || t.equals("")) ? "Page" : t;
+//        MessageFormat headerFormat = new MessageFormat(t);
+//        MessageFormat footerFormat = new MessageFormat("- {0} -");
+//        int cCount = 0;
+//        TableColumnModel tcm = table.getColumnModel();
+//        for (int i = 0; i < tcm.getColumnCount(); i++) {
+//            if (tcm.getColumn(i).getWidth() > 0) {
+//                cCount++;
+//            }
+//        }
+//        HashPrintRequestAttributeSet hrs = new HashPrintRequestAttributeSet();
+//        if (cCount > 11) {
+//            hrs.add(OrientationRequested.LANDSCAPE);
+//        }
+//        table.print(JTable.PrintMode.FIT_WIDTH, headerFormat, footerFormat, false, hrs, false);
+//    }
 
     static private class PrintWorker extends SwingWorker {
 
-        ViewFunction vf = null;
+        //ViewFunction vf = null;
 
         JTable table = null;
 
         public PrintWorker(JTable table) {
-            vf = ViewFunction.getViewFunction(table);
+            /*vf = ViewFunction.getViewFunction(table);*/
             this.table = table;
-            if (vf != null) {
+            /*if (vf != null) {
                 vf.startInfiniteLock("打印中,请稍后...");
-            }
+            }*/
             table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
             ComponentResizer.resizeTableColumnWithContent(table);
         }
 
         @Override
         protected Object doInBackground() throws Exception {
-            print(vf, table);
+            print(table);
             return null;
         }
 
         @Override
         protected void done() {
             try {
-                if (vf != null) {
+                /*if (vf != null) {
                     vf.stopInfiniteLock();
-                }
+                }*/
                 ComponentResizer.resizeTableColumnWithCC(table);
                 get();
             } catch (Throwable ex) {
                 logger.error("PrinterException", ex);
-                JOptionPane.showMessageDialog(vf,
-                        "打印失败\n" + MTException.getExceptionMsg(ex));
+                JOptionPane.showMessageDialog(table, "打印失败\n" + MTException.getExceptionMsg(ex));
             }
         }
     }

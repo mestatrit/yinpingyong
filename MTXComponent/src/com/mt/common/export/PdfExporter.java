@@ -10,8 +10,6 @@ import com.lowagie.text.pdf.PdfWriter;
 import com.mt.common.gui.MTXComponent.MTXFileChooser;
 import com.mt.common.gui.MTXComponent.MTXTreeTable;
 import com.mt.common.gui.table.MCNumber;
-import com.mt.core.functionDef.ViewFunction;
-import com.mt.util.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -160,11 +158,16 @@ public class PdfExporter implements ActionListener {
                     } catch (InterruptedException e) {
                         //
                     }
-                    ViewFunction vf = ViewFunction.getViewFunction(table);
+                    /**
+                     * modify on 2012.07.20
+                     * PDF文件名称直接取时间
+                     */
+                    /*ViewFunction vf = ViewFunction.getViewFunction(table);
                     String dateFile2 = "";
                     if (vf != null) {
                         dateFile2 = StringUtil.rmFChar(vf.getViewTitle()) + "_" + dateFile;
-                    }
+                    }*/
+                    String dateFile2 = dateFile;
                     final File tempFile = new File(tempPath + dateFile2 + ".pdf");
                     savePDF(tempFile, true);
                     try {
@@ -196,11 +199,15 @@ public class PdfExporter implements ActionListener {
         MTXFileChooser fChooser = new MTXFileChooser();
         String dateFile = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date(System.currentTimeMillis()));
         fChooser.setSelectedFile(new File(prefix + dateFile + ".pdf"));
-        Component view = ViewFunction.getViewFunction(table);
+        /**
+         * modify by yinpy on 2012.07.20
+         * 弹出框的基顶直接选用当前表格，不再追溯其父类容器
+         */
+        /*Component view = ViewFunction.getViewFunction(table);
         if (view == null) {
             view = table;
-        }
-
+        }*/
+        Component view = table;
         File fileSave = null;
         while (true) {
             if (fChooser.showSaveDialog(view) != MTXFileChooser.APPROVE_OPTION) {
