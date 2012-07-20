@@ -2,8 +2,6 @@ package com.mt.common.export;
 
 import com.mt.common.gui.MTXComponent.MTXFileChooser;
 import com.mt.common.selectionBind.NameCodeItem;
-import com.mt.core.functionDef.ViewFunction;
-import com.mt.util.StringUtil;
 import org.slf4j.LoggerFactory;
 
 import javax.swing.*;
@@ -56,10 +54,16 @@ public class ExcelExporter implements ActionListener {
         fChooser.setDialogType(MTXFileChooser.SAVE_DIALOG);
         String dateFile = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date(System.currentTimeMillis()));
         fChooser.setSelectedFile(new File(prefix + dateFile + ".xls"));
-        Component view = ViewFunction.getViewFunction(table);
+        
+        /*
+         * modify on 2012.07.20
+         * 弹出框的弹出位置，以当前表格为基准；不再以表格所在的父容器为基准
+         */
+        /*Component view = ViewFunction.getViewFunction(table);
         if (view == null) {
             view = table;
-        }
+        }*/
+        Component view = table;
         while (true) {
             if (fChooser.showSaveDialog(view) != MTXFileChooser.APPROVE_OPTION) {
                 return;
@@ -100,10 +104,14 @@ public class ExcelExporter implements ActionListener {
                 if (!tempDir.exists()) {
                     tempDir.mkdirs();
                 }
-                ViewFunction vf = ViewFunction.getViewFunction(table);
+                /**
+                 * modify on 2012.07.20
+                 * Excel的文件名称不再取所在容器的名称；直接取日期做为文件名
+                 */
+                /*ViewFunction vf = ViewFunction.getViewFunction(table);
                 if (vf != null) {
                     dateFile = StringUtil.rmFChar(vf.getViewTitle()) + "_" + dateFile;
-                }
+                }*/
                 File tempFile = new File(tempPath + dateFile + ".xls");
                 ExportExcelTemplate eet = new ExportExcelTemplate(table, dateFile, tempFile,colorFlag);
                 eet.exportExcel();

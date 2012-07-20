@@ -1,7 +1,5 @@
 package com.mt.common.export;
 
-import com.mt.core.functionDef.ViewFunction;
-
 import javax.swing.*;
 import javax.swing.table.TableColumn;
 import java.awt.*;
@@ -183,10 +181,15 @@ public class ExcelCopyPaster implements ActionListener {
         if (!((numrows - 1 == rowsselected[rowsselected.length - 1]
                 - rowsselected[0] && numrows == rowsselected.length) && (numcols - 1 == colsselected[colsselected.length - 1]
                 - colsselected[0] && numcols == colsselected.length))) {
-            Component com = ViewFunction.getViewFunction(table);
+            /**
+             * modify on 2012.07.20
+             * 弹出框的弹出位置，基底直接选用table
+             */
+        	/*Component com = ViewFunction.getViewFunction(table);
             if (com == null) {
                 com = table;
-            }
+            }*/
+            Component com = table;
             JOptionPane.showMessageDialog(com, "选择单元格要相邻，否则无法复制");
             return;
         }
