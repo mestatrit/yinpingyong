@@ -18,6 +18,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableColumnModel;
 
+import org.apache.log4j.PropertyConfigurator;
+
 import com.mt.common.gui.MTXComponent.MTXTable;
 
 /**
@@ -37,6 +39,8 @@ public class MTXTableTest {
 	private JButton cleanButton, addButton, saveButton;
 
 	public MTXTableTest() {
+		PropertyConfigurator.configure("etc/log4j.properties");
+		
 		initComponent();
 		initAction();
 	}
