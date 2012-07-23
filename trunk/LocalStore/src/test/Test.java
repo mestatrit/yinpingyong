@@ -19,17 +19,17 @@ public class Test {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		/*FieldMapSet curCol = new FieldMapSet("curCol");
+		FieldMapSet curCol = new FieldMapSet("curCol");
 		FieldMap fm = new FieldMap("col");
 		fm.putField("colName", "test");
 		fm.putField("colIndex", 1);
 		curCol.addFieldMap(fm);
-		LocalStore.toLocalXMLData("testCC", curCol, StorePath.LoginUserPath);*/
+		LocalStore.toLocalXMLData("testCC", curCol, StorePath.LoginUserPath);
 		
-		/*user user = new user();
+		user user = new user();
 		user.setName("admin");
 		user.setPassword("00000000");
-		LocalStore.toLocalXMLData("user", user, StorePath.LoginUserPath);*/
+		LocalStore.toLocalXMLData("user", user, StorePath.LoginUserPath);
 		
 		Object obj = LocalStore.fromLocalXMLData(FieldMapSet.class,"c:/testCC.db");
 		System.err.println(obj);
