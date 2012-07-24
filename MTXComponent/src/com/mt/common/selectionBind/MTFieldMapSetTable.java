@@ -18,10 +18,12 @@ import java.util.List;
 
 /**
  * 一个直接支持FieldMapSet的表格
- *
+ * 
  * @author hanhui
+ * 
+ * MTFieldMapSetTable和通讯层的绑定去除，保证控件内聚性（2012-07-24 yinpy）
  */
-public class MTFieldMapSetTable2 extends MTXTable{
+public class MTFieldMapSetTable extends MTXTable{
 
     /**
      * 数据模型
@@ -43,7 +45,7 @@ public class MTFieldMapSetTable2 extends MTXTable{
     /**
      * 构造一个空表格
      */
-    public MTFieldMapSetTable2() {
+    public MTFieldMapSetTable() {
         this(null, new FieldColumnList());
     }
 
@@ -55,7 +57,7 @@ public class MTFieldMapSetTable2 extends MTXTable{
      *
      * @param fieldColumns
      */
-    public MTFieldMapSetTable2(String... fieldColumns) {
+    public MTFieldMapSetTable(String... fieldColumns) {
         this(null, fieldColumns);
     }
 
@@ -75,7 +77,7 @@ public class MTFieldMapSetTable2 extends MTXTable{
      *
      * @param path
      */
-    public MTFieldMapSetTable2(String path) {
+    public MTFieldMapSetTable(String path) {
         this(null, path);
     }
 
@@ -84,7 +86,7 @@ public class MTFieldMapSetTable2 extends MTXTable{
      *
      * @param xmlDoc
      */
-    public MTFieldMapSetTable2(Document xmlDoc) {
+    public MTFieldMapSetTable(Document xmlDoc) {
         this(null, xmlDoc);
     }
 
@@ -93,7 +95,7 @@ public class MTFieldMapSetTable2 extends MTXTable{
      *
      * @param fcs
      */
-    public MTFieldMapSetTable2(FieldColumnList fcs) {
+    public MTFieldMapSetTable(FieldColumnList fcs) {
         this(null, fcs);
     }
 
@@ -106,7 +108,7 @@ public class MTFieldMapSetTable2 extends MTXTable{
      * @param fms
      * @param fieldColumns
      */
-    public MTFieldMapSetTable2(FieldMapSet fms, String... fieldColumns) {
+    public MTFieldMapSetTable(FieldMapSet fms, String... fieldColumns) {
         this(fms, new FieldColumnList(fieldColumns));
     }
 
@@ -116,7 +118,7 @@ public class MTFieldMapSetTable2 extends MTXTable{
      * @param fms
      * @param path
      */
-    public MTFieldMapSetTable2(FieldMapSet fms, String path) {
+    public MTFieldMapSetTable(FieldMapSet fms, String path) {
         this(fms, new FieldColumnList(path));
     }
 
@@ -126,7 +128,7 @@ public class MTFieldMapSetTable2 extends MTXTable{
      * @param fms
      * @param xmlDoc
      */
-    public MTFieldMapSetTable2(FieldMapSet fms, Document xmlDoc) {
+    public MTFieldMapSetTable(FieldMapSet fms, Document xmlDoc) {
         this(fms, new FieldColumnList(xmlDoc));
     }
 
@@ -136,7 +138,7 @@ public class MTFieldMapSetTable2 extends MTXTable{
      * @param fms
      * @param fcs
      */
-    public MTFieldMapSetTable2(FieldMapSet fms, FieldColumnList fcs) {
+    public MTFieldMapSetTable(FieldMapSet fms, FieldColumnList fcs) {
         setRowHeight(25);
         fTableModel = new FieldMapSetTableModel();
         this.setDataModel(fTableModel);
