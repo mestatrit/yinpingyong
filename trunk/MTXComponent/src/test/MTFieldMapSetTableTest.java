@@ -18,7 +18,7 @@ import org.apache.log4j.PropertyConfigurator;
 import com.mt.common.dynamicDataDef.FieldMap;
 import com.mt.common.dynamicDataDef.FieldMapSet;
 import com.mt.common.gui.model.DoubleCommaDoc;
-import com.mt.common.selectionBind.MTFieldMapSetTable2;
+import com.mt.common.selectionBind.MTFieldMapSetTable;
 
 /**
  *
@@ -28,10 +28,10 @@ import com.mt.common.selectionBind.MTFieldMapSetTable2;
  * 
  * 2012-7-24
  */
-public class MTFieldMapSetTable2Test {
+public class MTFieldMapSetTableTest {
 
 	private JFrame frame;
-	private MTFieldMapSetTable2 mtTable;
+	private MTFieldMapSetTable mtTable;
 	private JPanel searchPanel,resultPanel;
 	private JButton cleanButton, addButton, saveButton;
 	
@@ -39,10 +39,10 @@ public class MTFieldMapSetTable2Test {
 			"ID;ID;Number",
 			"姓名;Name;String;",
 			"性别;Sex;Boolean;;;;true;",
-			"年龄;Age;Number;3;;test.MTFieldMapSetTable2Test$AgeClass;true;"
+			"年龄;Age;Number;3;;test.MTFieldMapSetTableTest$AgeClass;true;"
 		};
 	
-	public MTFieldMapSetTable2Test(){
+	public MTFieldMapSetTableTest(){
 		PropertyConfigurator.configure("etc/log4j.properties");
 		
 		initComponent();
@@ -76,7 +76,7 @@ public class MTFieldMapSetTable2Test {
 	
 	private void initResultComponent(){
 		resultPanel = new JPanel(new BorderLayout());
-		mtTable = new MTFieldMapSetTable2(title);
+		mtTable = new MTFieldMapSetTable(title);
 		
 		JTextField ageField = new JTextField();
 		ageField.setDocument(new DoubleCommaDoc(3, 1, 4, 0));
@@ -131,7 +131,7 @@ public class MTFieldMapSetTable2Test {
 			
 			@Override
 			public void run() {
-				new MTFieldMapSetTable2Test();
+				new MTFieldMapSetTableTest();
 			}
 		});
 	}
