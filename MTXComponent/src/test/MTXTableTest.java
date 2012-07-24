@@ -43,6 +43,9 @@ public class MTXTableTest {
 		
 		initComponent();
 		initAction();
+		
+		table.setCopyEnable(true);
+		table.setExportEnable(true);
 	}
 
 	private void initComponent() {
@@ -74,12 +77,12 @@ public class MTXTableTest {
 		model = new TableModel();
 		table = new MTXTable(model);
 		table.setBackground(Color.white);
-
+		
 		//设置单元格编辑器
 		JComboBox com = new JComboBox(new String[] { "16", "17", "18", "19","20", "21", "22" });
 		TableColumnModel tcm = table.getColumnModel();
 		tcm.getColumn(3).setCellEditor(new DefaultCellEditor(com));
-
+		
 		resultPanel.add(new JScrollPane(table), BorderLayout.CENTER);
 	}
 
