@@ -17,6 +17,7 @@ import org.apache.log4j.PropertyConfigurator;
 
 import com.mt.common.dynamicDataDef.FieldMap;
 import com.mt.common.dynamicDataDef.FieldMapSet;
+import com.mt.common.dynamicDataDef.FieldMapUtil;
 import com.mt.common.gui.model.DoubleCommaDoc;
 import com.mt.common.selectionBind.MTFieldMapSetTable;
 
@@ -115,7 +116,7 @@ public class MTFieldMapSetTableTest {
 		FieldMap fm = new FieldMap("Result");
 		fm.putIntStringValueField("ID", mtTable.getFieldMapCount()+1);
 		fm.putField("Name", "李逵");
-		fm.putField("Sex", "男");
+		fm.putField("Sex", "Y");
 		fm.putIntStringValueField("Age", 10);
 		
 		fms.addFieldMap(fm);
@@ -123,7 +124,7 @@ public class MTFieldMapSetTableTest {
 	}
 	
 	public void saveData(){
-		System.out.println(mtTable.getFieldMapSet());
+		System.out.println(FieldMapUtil.createXMLString(mtTable.getFieldMapSet()));
 	}
 	
 	public static void main(String[] args) {
