@@ -89,12 +89,22 @@ public class MTFileMapNodeTreeTableTest {
 			@Override
 			protected Boolean isCellEditable(FieldMapNode node, Field field) {
 				String name = node.getStringValue("Name");
-				System.out.println(name);
-				if (!"根节点".equals(name) && !"部门节点".equals(name)) {
+				if ( (!"根节点".equals(name) && !"部门节点".equals(name)) || "Sex".equals(field.getName()) ) {
 					return true;
 				}
+				
 				return false;
 			}
+
+			@Override
+			protected void fieldChanged(Field field, Object oldValue, FieldMapNode row) {
+				if (field.getName().equals("Sex")) {
+					for(int index=0; index<row.getChildCount(); index++){
+						row.getChildAt(index).getField("Sex").setValue(field.getValue());
+					}
+				}
+			}
+			
 			
 		};
 		
@@ -132,6 +142,7 @@ public class MTFileMapNodeTreeTableTest {
 	private void initData(){
 		this.commonTree = new FieldMapNode("TREE");
 		this.commonTree.addField("Name", "根节点");
+		this.commonTree.addField("Sex", "N");
 		this.mtTable.setFieldMapNode(this.commonTree);
 	}
 	
@@ -142,10 +153,11 @@ public class MTFileMapNodeTreeTableTest {
 	private void addData(){
 		FieldMapNode fmd = new FieldMapNode("TREE");
 		fmd.addField("Name","部门节点");
+		fmd.addField("Sex", "N");
 		
 		FieldMapNode childFmd = new FieldMapNode("LEAF");
 		childFmd.addField("Name", "李逵");
-		childFmd.addField("Sex", "TRUE");
+		childFmd.addField("Sex", "Y");
 		childFmd.putDoubleStringValueField("Age", 20);
 		
 		fmd.addChildNode(childFmd);
