@@ -38,8 +38,8 @@ public class MTFieldMapSetTableTest {
 	private JButton cleanButton, addButton, saveButton;
 	
 	private String[] title ={
-			"ID;ID;MCNumber;",
-			"姓名;Name;String;",
+			"ID;ID;MCNumber;;;;false;",
+			"姓名;Name;String;;;;true;",
 			"性别;Sex;Boolean;;;;true;",
 			"年龄;Age;MCNumber;3;;test.MTFieldMapSetTableTest$AgeClass;true;"
 		};
@@ -80,11 +80,12 @@ public class MTFieldMapSetTableTest {
 		resultPanel = new JPanel(new BorderLayout());
 		mtTable = new MTFieldMapSetTable(title);
 		
+		/**
+		 * 设置列编辑器
+		 */
 		JTextField ageField = new JTextField();
 		ageField.setDocument(new DoubleCommaDoc(3, 1, 4, 0));
 		mtTable.setDefaultEditor(AgeClass.class, new DefaultCellEditor(ageField));
-		JCheckBox sexBox = new JCheckBox();
-		//mtTable.setDefaultEditor(Boolean.class, new DefaultCellEditor(sexBox));
 		
 		resultPanel.add(new JScrollPane(mtTable),BorderLayout.CENTER);
 	}
