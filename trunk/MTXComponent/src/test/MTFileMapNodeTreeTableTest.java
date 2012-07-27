@@ -147,7 +147,7 @@ public class MTFileMapNodeTreeTableTest {
 	}
 	
 	private void removeData(){
-		this.mtTable.clearData();
+		initData();
 	}
 	
 	private void addData(){
