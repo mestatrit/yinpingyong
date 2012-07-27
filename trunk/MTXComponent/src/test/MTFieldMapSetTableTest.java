@@ -1,6 +1,8 @@
 package test;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,16 +11,21 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableCellRenderer;
 
 import org.apache.log4j.PropertyConfigurator;
 
 import com.mt.common.dynamicDataDef.FieldMap;
 import com.mt.common.dynamicDataDef.FieldMapSet;
 import com.mt.common.dynamicDataDef.FieldMapUtil;
+import com.mt.common.gui.ColorLib;
 import com.mt.common.gui.model.DoubleCommaDoc;
 import com.mt.common.selectionBind.MTFieldMapSetTable;
 
@@ -86,6 +93,32 @@ public class MTFieldMapSetTableTest {
 		JTextField ageField = new JTextField();
 		ageField.setDocument(new DoubleCommaDoc(3, 1, 4, 0));
 		mtTable.setDefaultEditor(AgeClass.class, new DefaultCellEditor(ageField));
+		
+		mtTable.setDefaultEditor(Boolean.class, new DefaultCellEditor(new JCheckBox()));
+		mtTable.setDefaultRenderer(Boolean.class, new DefaultTableCellRenderer(){
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public Component getTableCellRendererComponent(JTable table,
+					Object value, boolean isSelected, boolean hasFocus,
+					int row, int column) {
+				JLabel cell = (JLabel) super.getTableCellRendererComponent(table,
+		                value, isSelected, hasFocus, row, column);
+		        if (!isSelected) {
+		        	 if (row % 2 == 0) {
+		                    cell.setBackground(ColorLib.TRow_EvenColor);
+		                    cell.setForeground(Color.BLACK);
+		        	 } else {
+		                    cell.setBackground(ColorLib.TRow_OddColor);
+		                    cell.setForeground(Color.BLACK);
+		        	 }
+		        }
+		        cell.setHorizontalAlignment(SwingConstants.CENTER);
+		        return cell;
+			}
+			
+		});
 		
 		resultPanel.add(new JScrollPane(mtTable),BorderLayout.CENTER);
 	}
