@@ -38,10 +38,10 @@ public class MTFileMapNodeTreeTableTest {
 	private FieldMapNode commonTree; 
 	//表头
 	private String[] title ={
-			"ID;ID;Number;",
+			"ID;ID;MCNumber;",
 			"姓名;Name;String;",
 			"性别;Sex;Boolean;;;;true;",
-			"年龄;Age;String;3;;test.MTFileMapNodeTreeTableTest$AgeClass;true;"
+			"年龄;Age;MCNumber;3;;test.MTFileMapNodeTreeTableTest$AgeClass;true;"
 	};
 	
 	public MTFileMapNodeTreeTableTest(){

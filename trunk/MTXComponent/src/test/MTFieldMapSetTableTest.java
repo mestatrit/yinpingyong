@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -37,10 +38,10 @@ public class MTFieldMapSetTableTest {
 	private JButton cleanButton, addButton, saveButton;
 	
 	private String[] title ={
-			"ID;ID;Number",
+			"ID;ID;MCNumber;",
 			"姓名;Name;String;",
 			"性别;Sex;Boolean;;;;true;",
-			"年龄;Age;Number;3;;test.MTFieldMapSetTableTest$AgeClass;true;"
+			"年龄;Age;MCNumber;3;;test.MTFieldMapSetTableTest$AgeClass;true;"
 		};
 	
 	public MTFieldMapSetTableTest(){
@@ -82,6 +83,8 @@ public class MTFieldMapSetTableTest {
 		JTextField ageField = new JTextField();
 		ageField.setDocument(new DoubleCommaDoc(3, 1, 4, 0));
 		mtTable.setDefaultEditor(AgeClass.class, new DefaultCellEditor(ageField));
+		JCheckBox sexBox = new JCheckBox();
+		//mtTable.setDefaultEditor(Boolean.class, new DefaultCellEditor(sexBox));
 		
 		resultPanel.add(new JScrollPane(mtTable),BorderLayout.CENTER);
 	}
