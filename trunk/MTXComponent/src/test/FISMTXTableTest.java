@@ -21,7 +21,6 @@ import javax.swing.table.TableColumnModel;
 import org.apache.log4j.PropertyConfigurator;
 
 import com.mt.common.gui.MTXComponent.FISMTXTable;
-import com.mt.common.gui.table.MCNumber;
 
 /**
  * FISMTXTable 样例
