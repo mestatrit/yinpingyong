@@ -82,6 +82,7 @@ public class MTXTableTest {
 		JComboBox com = new JComboBox(new String[] { "16", "17", "18", "19","20", "21", "22" });
 		TableColumnModel tcm = table.getColumnModel();
 		tcm.getColumn(3).setCellEditor(new DefaultCellEditor(com));
+		tcm.getColumn(1).setCellRenderer(new CheckBoxCellRender());
 		
 		resultPanel.add(new JScrollPane(table), BorderLayout.CENTER);
 	}
