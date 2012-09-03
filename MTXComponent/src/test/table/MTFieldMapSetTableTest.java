@@ -37,11 +37,14 @@ public class MTFieldMapSetTableTest {
 	private JPanel searchPanel,resultPanel;
 	private JButton cleanButton, addButton, saveButton;
 	
+	/**
+	 * 2:表示保留二位有效数据
+	 */
 	private String[] title ={
-			"ID;Id;Number;;;;false;",
+			"ID;Id;Number;2;;;false;",
 			"姓名;Name;String;;;;true;",
 			"性别;Sex;Boolean;;;;true;",
-			"年龄;Age;Number;;;test.table.MTFieldMapSetTableTest$AgeClass;true;"
+			"年龄;Age;Number;2;;test.table.MTFieldMapSetTableTest$AgeClass;true;"
 		};
 	
 	public MTFieldMapSetTableTest(){
@@ -117,7 +120,7 @@ public class MTFieldMapSetTableTest {
 	public void addData(){
 		FieldMapSet fms = mtTable.getFieldMapSet();
 		FieldMap fm = new FieldMap("Result");
-		fm.putIntStringValueField("Id", 1);
+		fm.putDoubleStringValueField("Id", 1.152);
 		fm.putField("Name", "李逵");
 		fm.putField("Sex", "Y");
 		fm.putDoubleStringValueField("Age", 100.1111);
