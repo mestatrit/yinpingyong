@@ -18,6 +18,7 @@ import com.mt.common.dynamicDataDef.Field;
 import com.mt.common.dynamicDataDef.FieldMapNode;
 import com.mt.common.dynamicDataDef.FieldMapUtil;
 import com.mt.common.gui.model.DoubleCommaDoc;
+import com.mt.common.gui.table.MCNumber;
 import com.mt.common.selectionBind.MTFieldMapNodeTreeTable;
 
 /**
@@ -41,7 +42,7 @@ public class MTFileMapNodeTreeTableTest {
 			"ID;ID;MCNumber;",
 			"姓名;Name;String;",
 			"性别;Sex;Boolean;;;;true;",
-			"年龄;Age;MCNumber;3;;test.MTFileMapNodeTreeTableTest$AgeClass;true;"
+			"年龄;Age;MCNumber;3;;test.table.MTFileMapNodeTreeTableTest$AgeClass;true;"
 	};
 	
 	public MTFileMapNodeTreeTableTest(){
@@ -184,7 +185,7 @@ public class MTFileMapNodeTreeTableTest {
 	 * @author Ryan
 	 *
 	 */
-	class AgeClass {
+	class AgeClass extends MCNumber{
 		
 	}
 }

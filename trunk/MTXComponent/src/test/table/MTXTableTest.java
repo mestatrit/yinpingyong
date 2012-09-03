@@ -20,6 +20,8 @@ import javax.swing.table.TableColumnModel;
 
 import org.apache.log4j.PropertyConfigurator;
 
+import test.table.render.CheckBoxCellRender;
+
 
 import com.mt.common.gui.MTXComponent.MTXTable;
 

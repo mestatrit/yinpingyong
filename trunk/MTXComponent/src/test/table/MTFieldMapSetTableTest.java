@@ -33,22 +33,15 @@ import com.mt.common.selectionBind.MTFieldMapSetTable;
 public class MTFieldMapSetTableTest {
 
 	private JFrame frame;
-	private MTFieldMapSetTable mtTable,mtTable1;
+	private MTFieldMapSetTable mtTable;
 	private JPanel searchPanel,resultPanel;
 	private JButton cleanButton, addButton, saveButton;
 	
 	private String[] title ={
-			"ID;ID;MCNumber;;;;false;",
+			"ID;Id;Number;;;;false;",
 			"姓名;Name;String;;;;true;",
 			"性别;Sex;Boolean;;;;true;",
-			"年龄;Age;MCNumber;3;;test.MTFieldMapSetTableTest$AgeClass;true;"
-		};
-	
-	private String[] title1 ={
-			"ID;ID;MCNumber;;;;false;",
-			"姓名;Name;String;;;;true;",
-			"性别;Sex;Boolean;;;;true;",
-			"年龄1;Age1;MCNumber;3;;test.MTFieldMapSetTableTest$AgeClass;true;"
+			"年龄;Age;Number;;;test.table.MTFieldMapSetTableTest$AgeClass;true;"
 		};
 	
 	public MTFieldMapSetTableTest(){
@@ -85,8 +78,6 @@ public class MTFieldMapSetTableTest {
 	
 	private void initResultComponent(){
 		resultPanel = new JPanel(new BorderLayout());
-		mtTable1 = new MTFieldMapSetTable(title1);
-		
 		mtTable = new MTFieldMapSetTable(title);
 		
 		/**
@@ -97,7 +88,6 @@ public class MTFieldMapSetTableTest {
 		mtTable.setDefaultEditor(AgeClass.class, new DefaultCellEditor(ageField));
 		
 		resultPanel.add(new JScrollPane(mtTable),BorderLayout.CENTER);
-		resultPanel.add(new JScrollPane(mtTable1),BorderLayout.SOUTH);
 	}
 	
 	private void initAction(){
@@ -122,28 +112,22 @@ public class MTFieldMapSetTableTest {
 	
 	public void removeData(){
 		mtTable.clearData();
-		mtTable1.clearData();
 	}
 	
 	public void addData(){
 		FieldMapSet fms = mtTable.getFieldMapSet();
-		
 		FieldMap fm = new FieldMap("Result");
-		fm.putIntStringValueField("ID", mtTable.getFieldMapCount()+1);
+		fm.putIntStringValueField("Id", 1);
 		fm.putField("Name", "李逵");
 		fm.putField("Sex", "Y");
-		fm.putIntStringValueField("Age", 10);
-		fm.putIntStringValueField("Age1", 11);
-		fm.putIntStringValueField("Age2", 12);
-		
+		fm.putDoubleStringValueField("Age", 100.1111);
 		fms.addFieldMap(fm);
+		
 		mtTable.setFieldMapSet(fms);
-		mtTable1.setFieldMapSet(fms);
 	}
 	
 	public void saveData(){
 		System.out.println(FieldMapUtil.createXMLString(mtTable.getFieldMapSet()));
-		System.out.println(FieldMapUtil.createXMLString(mtTable1.getFieldMapSet()));
 	}
 	
 	public static void main(String[] args) {
@@ -158,7 +142,7 @@ public class MTFieldMapSetTableTest {
 	
 	/**
 	 * 标记性接口类
-	 * 继承的目的是为了单元格正常实现对齐
+	 * 继承的目的是为了单元格对齐(字符串：左对齐；数据：右对齐)
 	 */
 	class AgeClass extends MCNumber{
 		
