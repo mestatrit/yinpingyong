@@ -65,6 +65,7 @@ public class SimpleTableCellRenderer extends DefaultTableCellRenderer {
                 cell.setForeground(Color.BLACK);
             }
         }
+        
         cell.setHorizontalAlignment(alignment);
         return cell;
     }
