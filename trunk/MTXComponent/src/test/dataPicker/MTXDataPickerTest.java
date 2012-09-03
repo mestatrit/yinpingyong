@@ -1,4 +1,4 @@
-package test;
+package test.dataPicker;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
