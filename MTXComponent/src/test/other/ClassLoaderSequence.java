@@ -1,4 +1,4 @@
-package test;
+package test.other;
 
 /**
  * 类加载顺序
@@ -7,7 +7,7 @@ package test;
  * 
  * 2012-7-28
  */
-public class Admin {
+public class ClassLoaderSequence {
 
     public static void main(String... args) {
         new Father();

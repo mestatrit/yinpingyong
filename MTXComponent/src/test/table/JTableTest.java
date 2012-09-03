@@ -1,4 +1,4 @@
-package test;
+package test.table;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

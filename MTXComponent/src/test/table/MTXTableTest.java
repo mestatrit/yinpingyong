@@ -1,4 +1,4 @@
-package test;
+package test.table;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -19,6 +19,7 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableColumnModel;
 
 import org.apache.log4j.PropertyConfigurator;
+
 
 import com.mt.common.gui.MTXComponent.MTXTable;
 
