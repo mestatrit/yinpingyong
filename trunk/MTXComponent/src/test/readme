@@ -1,8 +1,8 @@
 一、表格组件
 	1、MTXTable
 	2、MTXFieldMapSetTable
-	3、MTXFieldMapNodeTreeTable
-	4、FISMTXTable
+	3、MTXFieldMapNodeTreeTable	
+	4、FISMTXTable：基于另外一种配色方案的MTXTable
 	
 二、日期组件
 	1、MTXDatePicker	
