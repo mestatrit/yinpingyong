@@ -44,6 +44,9 @@ public class CheckBoxCellRender extends JCheckBox implements TableCellRenderer {
             	this.setBackground(ColorLib.TRow_OddColor);
             	this.setForeground(Color.BLACK);
             }
+        } else {
+        	this.setBackground(table.getSelectionBackground());
+        	this.setForeground(table.getSelectionForeground());
         }
         
         this.setHorizontalAlignment(hAlignment);
