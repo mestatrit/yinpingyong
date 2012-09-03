@@ -15,6 +15,8 @@ import javax.swing.SwingUtilities;
 
 import org.apache.log4j.PropertyConfigurator;
 
+import test.table.render.CheckBoxCellRender;
+
 import com.mt.common.dynamicDataDef.FieldMap;
 import com.mt.common.dynamicDataDef.FieldMapSet;
 import com.mt.common.dynamicDataDef.FieldMapUtil;
@@ -89,6 +91,12 @@ public class MTFieldMapSetTableTest {
 		JTextField ageField = new JTextField();
 		ageField.setDocument(new DoubleCommaDoc(3, 1, 4, 0));
 		mtTable.setDefaultEditor(AgeClass.class, new DefaultCellEditor(ageField));
+		
+		/**
+		 * 设置CheckBox的渲染；
+		 * 默认CheckBox不做渲染，使其有别于其他的单元格
+		 */
+		mtTable.setDefaultRenderer(Boolean.class, new CheckBoxCellRender());
 		
 		resultPanel.add(new JScrollPane(mtTable),BorderLayout.CENTER);
 	}
