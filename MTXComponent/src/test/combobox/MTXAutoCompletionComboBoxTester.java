@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import com.mt.common.gui.MTXComponent.MTXAutoCompletionComboBox;
+import com.mt.common.gui.MTXComponent.MTXAutoCompletionComboPanel;
 import com.mt.common.selectionBind.NameCodeItem;
 
 /**
@@ -20,7 +21,8 @@ public class MTXAutoCompletionComboBoxTester {
 	private JFrame frame;
 	private JPanel searchPanel;
 	private MTXAutoCompletionComboBox box;
-
+	private MTXAutoCompletionComboPanel boxPanel;
+	
 	private Object[] testV = { 
 			new NameCodeItem("华为23434", "dfdsf1"),
 			new NameCodeItem("华为23434", "dfdsf2"),
@@ -53,11 +55,14 @@ public class MTXAutoCompletionComboBoxTester {
 		this.searchPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		this.box = new MTXAutoCompletionComboBox(testV);
 		this.box.setAutoCSelectedIndex(1);
+		this.boxPanel = new MTXAutoCompletionComboPanel(testV);
 		
-		this.searchPanel.add(new JLabel("搜索下拉框："));
-		this.searchPanel.add(box);
 		this.searchPanel.add(new JLabel("普通下拉框："));
 		this.searchPanel.add(new JComboBox(testV));
+		this.searchPanel.add(new JLabel("搜索下拉框："));
+		this.searchPanel.add(box);
+		this.searchPanel.add(new JLabel("普通下拉面板："));
+		this.searchPanel.add(boxPanel);
 	}
 
 	public static void main(String[] args) {

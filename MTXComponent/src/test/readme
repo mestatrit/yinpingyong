@@ -8,4 +8,6 @@
 	1、MTXDatePicker	
 	
 三、组合框
-	1、
+	1、MTXAutoCompletionComboBox：支持模糊搜索的下拉框
+	
+	
