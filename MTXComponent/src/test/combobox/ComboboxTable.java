@@ -36,11 +36,22 @@ public class ComboboxTable {
 	private void initComponent() {
 		this.frame = new JFrame("带模糊搜索的下拉框表格样例...");
 		this.mtTable = new MTXTable();
+		
+		/**
+		 * 设置表格的数据模型
+		 */
 		this.mtTable.setModel(new DefaultTableModel(5, 6));
 		
+		/**
+		 * 设置表格的编辑器
+		 */
 		MTXAutoCompletionCellEditor editor = new MTXAutoCompletionCellEditor(testV);
 		editor.setAutoWide(true);
 		mtTable.setDefaultEditor(Object.class, editor);
+		
+		/**
+		 * 设置表格的渲染
+		 */
 		mtTable.setDefaultRenderer(Object.class, new MTXAutoCompletionCellRenderer(testV));
 		
 		this.frame.getContentPane().add(mtTable, BorderLayout.CENTER);
