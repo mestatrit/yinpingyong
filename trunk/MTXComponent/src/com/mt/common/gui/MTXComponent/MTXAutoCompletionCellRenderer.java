@@ -15,6 +15,14 @@ import java.util.List;
  *
  * @Author: hanhui
  * @Date: 2010-8-7
+ * 
+ * Note：
+ * 重写渲染器可能有二种情况：
+ * 第一：修改组件默认单元格的属性，继承DefaultTableCellRenderer，重写getTableCellRendererComponent方法
+ * 		例如：com.mt.common.gui.table.SimpleTableCellRenderer
+ * 
+ * 第二：更改组件单元格，继承替换的组件以及实现TableCellRenderer，重写getTableCellRendererComponent方法
+ * 		例如：本实例
  */
 public class MTXAutoCompletionCellRenderer extends MTXAutoCompletionComboPanel implements TableCellRenderer {
 

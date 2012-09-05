@@ -15,6 +15,14 @@ import java.util.List;
  *
  * @Author: hanhui
  * @Date: 2010-8-7
+ * 
+ * Note:
+ * 更改表格的编辑器场景如下：
+ * 1、DefaultCellEditor提供JLabel、JCheckBox以及JComboBox三种编辑器样式，如果当前的编辑样式和这三种一样，那么直接构造DefaultCellEditor对象
+ * 		例如：test.table.MTFieldMapSetTableTest做法
+ * 
+ * 2、默认的编辑器不满足要求，那么需要实现TableCellEditor（TreeCellEditor或是CellEditor）同时继承AbstractCellEditor，覆盖getTableCellEditorComponent方法
+ * 		例如：本实例
  */
 public class MTXAutoCompletionCellEditor extends AbstractCellEditor implements TableCellEditor {
 
