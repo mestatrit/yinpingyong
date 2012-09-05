@@ -58,5 +58,4 @@ public class FieldMapNodeTest {
 		fmd.searchNode("CNAME", "国债").addChildNode(childNode);
 		System.out.println(FieldMapUtil.createXMLString(fmd));
 	}
-
 }
