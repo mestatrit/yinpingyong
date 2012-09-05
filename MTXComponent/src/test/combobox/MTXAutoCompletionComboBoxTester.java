@@ -47,7 +47,7 @@ public class MTXAutoCompletionComboBoxTester {
 		this.initSearchPanel();
 		this.frame = new JFrame("支持模糊搜索的下拉框组件样例...");
 		this.frame.getContentPane().add(this.searchPanel, BorderLayout.CENTER);
-
+		
 		this.frame.setVisible(true);
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.frame.setSize(300, 300);
