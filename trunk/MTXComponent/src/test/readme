@@ -1,7 +1,7 @@
 一、表格组件
-	1、MTXTable
-	2、MTXFieldMapSetTable
-	3、MTXFieldMapNodeTreeTable	
+	1、MTXTable：扩展JTable功能的表格（导出、导出、打印以及排序）
+	2、MTXFieldMapSetTable：数据模型采用FieldMapSet的表格
+	3、MTXFieldMapNodeTreeTable：数据模型采用FieldMapNode的树形表格	
 	4、FISMTXTable：基于另外一种配色方案的MTXTable
 	
 二、日期组件
@@ -11,5 +11,11 @@
 	1、MTXAutoCompletionComboBox：支持模糊搜索的下拉框
 	2、MTXAutoCompletionComboPanel：模糊比对组合面板
 	3、MTXAutoCompletionDoubleComboPanel：模糊比对双组合面板
+
+四、
+
+五、超链接组件
+	1、JXHyperlink（swingx-1.0.jar、org.jdesktop.swingx.JXHyperlink）：超链接组件
+	
 	
 	
