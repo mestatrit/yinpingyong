@@ -7,7 +7,9 @@
 二、日期组件
 	1、MTXDatePicker	
 	
-三、组合框
+三、组合框（下拉框）
 	1、MTXAutoCompletionComboBox：支持模糊搜索的下拉框
+	2、MTXAutoCompletionComboPanel：模糊比对组合面板
+	3、MTXAutoCompletionDoubleComboPanel：模糊比对双组合面板
 	
 	

@@ -8,9 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
 
 import com.mt.common.gui.MTXComponent.MTXAutoCompletionComboBox;
 import com.mt.common.gui.MTXComponent.MTXAutoCompletionComboPanel;
+import com.mt.common.gui.MTXComponent.MTXAutoCompletionDoubleComboPanel;
 import com.mt.common.selectionBind.NameCodeItem;
 
 /**
@@ -22,6 +24,7 @@ public class MTXAutoCompletionComboBoxTester {
 	private JPanel searchPanel;
 	private MTXAutoCompletionComboBox box;
 	private MTXAutoCompletionComboPanel boxPanel;
+	private MTXAutoCompletionDoubleComboPanel doubleBoxPanel;
 	
 	private Object[] testV = { 
 			new NameCodeItem("华为23434", "dfdsf1"),
@@ -56,13 +59,17 @@ public class MTXAutoCompletionComboBoxTester {
 		this.box = new MTXAutoCompletionComboBox(testV);
 		this.box.setAutoCSelectedIndex(1);
 		this.boxPanel = new MTXAutoCompletionComboPanel(testV);
+		String[] dlist = {"华为", "招商"};
+		this.doubleBoxPanel = new MTXAutoCompletionDoubleComboPanel(dlist, testV);
 		
 		this.searchPanel.add(new JLabel("普通下拉框："));
 		this.searchPanel.add(new JComboBox(testV));
 		this.searchPanel.add(new JLabel("搜索下拉框："));
 		this.searchPanel.add(box);
-		this.searchPanel.add(new JLabel("普通下拉面板："));
+		this.searchPanel.add(new JLabel("搜索下拉框面板："));
 		this.searchPanel.add(boxPanel);
+		this.searchPanel.add(new JLabel("搜索下拉框双组合面板："));
+		this.searchPanel.add(doubleBoxPanel);
 	}
 
 	public static void main(String[] args) {
@@ -70,6 +77,12 @@ public class MTXAutoCompletionComboBoxTester {
 
 			@Override
 			public void run() {
+				try {
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());	
+				} catch (Exception e) {
+					return;
+				}
+				
 				new MTXAutoCompletionComboBoxTester();
 			}
 		});
