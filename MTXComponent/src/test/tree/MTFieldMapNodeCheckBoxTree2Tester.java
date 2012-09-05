@@ -19,21 +19,6 @@ public class MTFieldMapNodeCheckBoxTree2Tester {
 	
 	static {
 		fmn = new FieldMapNode("RYCS管理系统");
-		FieldMapNode childNode = new FieldMapNode("系统管理");
-		FieldMapNode leaf = new FieldMapNode("用户管理");
-		childNode.addChildNode(leaf);
-		leaf = new FieldMapNode("部门管理");
-		childNode.addChildNode(leaf);
-		leaf = new FieldMapNode("职位管理");
-		childNode.addChildNode(leaf);
-		leaf = new FieldMapNode("角色管理");
-		childNode.addChildNode(leaf);
-		fmn.addChildNode(childNode);
-		
-		childNode = new FieldMapNode("财务管理");
-		leaf = new FieldMapNode("财务管理");
-		childNode.addChildNode(leaf);
-		fmn.addChildNode(childNode);	
 	}
 	
 	public MTFieldMapNodeCheckBoxTree2Tester() {
