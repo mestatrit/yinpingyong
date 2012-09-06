@@ -59,8 +59,10 @@ public class MTXAutoCompletionComboBoxTester {
 		this.box = new MTXAutoCompletionComboBox(testV);
 		this.box.setAutoCSelectedIndex(1);
 		this.boxPanel = new MTXAutoCompletionComboPanel(testV);
+		this.boxPanel.setAutoCSelectedIndex(1);
 		String[] dlist = {"华为", "招商"};
 		this.doubleBoxPanel = new MTXAutoCompletionDoubleComboPanel(dlist, testV);
+		this.doubleBoxPanel.setAutoCSelectedIndex(1);
 		
 		this.searchPanel.add(new JLabel("普通下拉框："));
 		this.searchPanel.add(new JComboBox(testV));
