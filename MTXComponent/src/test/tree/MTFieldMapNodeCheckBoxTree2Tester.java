@@ -24,7 +24,7 @@ import com.mt.common.gui.MTXComponent.MTXGUIUtil;
 import com.mt.common.selectionBind.MTFieldMapNodeCheckBoxTree2;
 
 /**
- * 带CheckBox选择功能的树
+ * 带CheckBox选择功能的搜索树
  */
 public class MTFieldMapNodeCheckBoxTree2Tester {
 
