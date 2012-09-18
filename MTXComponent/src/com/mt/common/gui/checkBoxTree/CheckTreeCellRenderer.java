@@ -7,6 +7,9 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 import java.awt.*;
 
 /**
+ * Tree的渲染只是改变原树的图标，实现三态的效果。
+ * 相比较于MTFieldMapNodeCheckBoxTree的实现方式（直接重写renderer），要轻巧很多。
+ * 
  * CheckTree单元格表现器
  */
 public class CheckTreeCellRenderer extends DefaultTreeCellRenderer {

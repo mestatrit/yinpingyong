@@ -13,8 +13,8 @@
 	3、MTXAutoCompletionDoubleComboPanel：模糊比对双组合面板
 
 四、树形组件
-	1、MTFieldMapNodeCheckBoxTree2：带复选框且支持搜索的树
-	2、
+	1、MTFieldMapNodeCheckBoxTree2：带复选框且支持搜索的树（建议使用）
+	2、MTFieldMapNodeCheckBoxTree：带复选框且支持搜索的树
 		
 五、超链接组件
 	1、JXHyperlink：超链接组件

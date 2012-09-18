@@ -34,7 +34,7 @@ public class MTFieldMapNodeCheckBoxTree2Tester {
 	private JTextField serachField;
 	private MTFieldMapNodeCheckBoxTree2 checkBoxTree;
 	
-	private static FieldMapNode fmn;
+	public static FieldMapNode fmn;
 	private static final String NODE_NAME = "NODE_NAME";
 	
 	static {
