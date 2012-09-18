@@ -19,5 +19,7 @@
 五、超链接组件
 	1、JXHyperlink：超链接组件
 	
+六、文件选择组件
+	MTXFileChooser：打开或是另存为文件组件
 	
 	
