@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="Fmis"
+  id="myeclipse.1348068148753"
+  context-root="/Fmis"
+  j2ee-spec="5.0"
+  archive="Fmis.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
