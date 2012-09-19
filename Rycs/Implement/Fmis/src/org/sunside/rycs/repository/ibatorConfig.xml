@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ibatorConfiguration PUBLIC "-//Apache Software Foundation//DTD Apache iBATIS Ibator Configuration 1.0//EN" "http://ibatis.apache.org/dtd/ibator-config_1_0.dtd" >
+<ibatorConfiguration>
+
+	<classPathEntry location="I:\ComSTP\ComSTP_2012.03.29\workspace\Rycs\lib\mysql-connector-java-5.0.8-bin.jar" />
+	<ibatorContext id="context1">
+		<jdbcConnection 
+			driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/rycs" 
+			userId="root"
+			password="">
+		</jdbcConnection>
+
+		<javaModelGenerator targetPackage="org.sunside.rycs.repository.model.system" targetProject="Rycs" />
+		<sqlMapGenerator targetPackage="org.sunside.rycs.repository.dao.system.sql" targetProject="Rycs" />
+		<daoGenerator targetPackage="org.sunside.rycs.repository.dao.system" targetProject="Rycs" type="SPRING" />
+
+		<table tableName="sys_data_right">
+			<columnOverride column="id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="sys_id"/>
+			<columnOverride column="sys_user_id"/>
+		</table>
+		<table tableName="sys_dept">
+			<columnOverride column="id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="name"/>
+			<columnOverride column="parent_id"/>
+			<columnOverride column="remark"/>
+		</table>
+		<table tableName="sys_dictionary">
+			<columnOverride column="id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="data_type"/>
+			<columnOverride column="data_code"/>
+			<columnOverride column="data_name"/>
+			<columnOverride column="remark"/>
+		</table>
+		<table tableName="sys_post">
+			<columnOverride column="id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="name"/>
+			<columnOverride column="parent_id"/>
+			<columnOverride column="remark"/>
+		</table>
+		<table tableName="sys_right">
+			<columnOverride column="id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="name"/>
+			<columnOverride column="right_url"/>
+			<columnOverride column="parent_id"/>
+			<columnOverride column="remark"/>
+		</table>
+		<table tableName="sys_role">
+			<columnOverride column="id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="name"/>
+			<columnOverride column="remark"/>
+		</table>
+		<table tableName="sys_role_right">
+			<columnOverride column="id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="role_id"/>
+			<columnOverride column="right_id"/>
+		</table>
+		<table tableName="sys_user">
+			<columnOverride column="id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="post_id"/>
+			<columnOverride column="dept_id"/>
+			<columnOverride column="name"/>
+			<columnOverride column="password"/>
+			<columnOverride column="china_name"/>
+			<columnOverride column="age"/>
+			<columnOverride column="sex"/>
+			<columnOverride column="phone"/>
+			<columnOverride column="address"/>
+			<columnOverride column="last_login_time"/>
+			<columnOverride column="UPD_USR_ID"/>
+			<columnOverride column="UPD_DT"/>
+			<columnOverride column="CRTD_USR_ID"/>
+			<columnOverride column="CRTD_DT"/>
+			<columnOverride column="remark"/>
+		</table>
+		<table tableName="sys_user_role">
+			<columnOverride column="id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="role_id"/>
+			<columnOverride column="user_id"/>
+		</table>
+	</ibatorContext>
+	<ibatorContext id="context2">
+		<jdbcConnection 
+			driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/rycs" 
+			userId="root"
+			password="">
+		</jdbcConnection>
+
+		<javaModelGenerator targetPackage="org.sunside.rycs.repository.model.cust" targetProject="Rycs" />
+		<sqlMapGenerator targetPackage="org.sunside.rycs.repository.dao.cust.sql" targetProject="Rycs" />
+		<daoGenerator targetPackage="org.sunside.rycs.repository.dao.cust" targetProject="Rycs" type="SPRING" />
+
+		<table tableName="cus_bank_account">
+			<columnOverride column="id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="cus_id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="name" jdbcType="VARCHAR" javaType="String" />
+			<columnOverride column="account" jdbcType="VARCHAR" javaType="String" />
+			<columnOverride column="type" jdbcType="VARCHAR" javaType="String" />
+			<columnOverride column="remark" jdbcType="VARCHAR" javaType="String" />
+		</table>
+		<table tableName="cus_contacter">
+			<columnOverride column="id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="cus_id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="contacter_type" jdbcType="VARCHAR" javaType="String" />
+			<columnOverride column="contacter_name" jdbcType="VARCHAR" javaType="String" />
+			<columnOverride column="contacter_tel" jdbcType="VARCHAR" javaType="String" />
+		</table>
+		<table tableName="cus_fee">
+			<columnOverride column="id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="cus_id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="user_id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="cash_name" jdbcType="VARCHAR" javaType="String" />
+			<columnOverride column="cash_date"/>
+			<columnOverride column="cash_amount"/>
+			<columnOverride column="remark"/>
+		</table>
+		<table tableName="cus_info">
+			<columnOverride column="id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="user_id"/>
+			<columnOverride column="name"/>
+			<columnOverride column="short_name"/>
+			<columnOverride column="established_date"/>
+			<columnOverride column="type"/>
+			<columnOverride column="registered_capital"/>
+			<columnOverride column="real_capital"/>
+			<columnOverride column="insurcode"/>
+			<columnOverride column="legal_name"/>
+			<columnOverride column="legal_phone"/>
+			<columnOverride column="legal_id_card"/>
+			<columnOverride column="scope"/>
+			<columnOverride column="end_date"/>
+			<columnOverride column="registered_address"/>
+			<columnOverride column="real_address"/>
+			<columnOverride column="UPD_USR_ID"/>
+			<columnOverride column="UPD_DT"/>
+			<columnOverride column="CRTD_USR_ID"/>
+			<columnOverride column="CRTD_DT"/>
+			<columnOverride column="remark"/>
+		</table>
+		<table tableName="cus_license">
+			<columnOverride column="id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="cus_id"/>
+			<columnOverride column="name"/>
+			<columnOverride column="end_date"/>
+		</table>
+		<table tableName="cus_tax">
+			<columnOverride column="id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="cus_id"/>
+			<columnOverride column="name"/>
+			<columnOverride column="register_no"/>
+			<columnOverride column="computer_no"/>
+			<columnOverride column="pay_type"/>
+			<columnOverride column="manager_name"/>
+			<columnOverride column="dept_name"/>
+			<columnOverride column="telphone"/>
+		</table>
+		<table tableName="cus_tax_account">
+			<columnOverride column="id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="cus_id"/>
+			<columnOverride column="name"/>
+			<columnOverride column="type"/>
+			<columnOverride column="amount"/>
+			<columnOverride column="remark"/>
+		</table>
+	</ibatorContext>
+</ibatorConfiguration>

@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2012/9/19 23:58:04                           */
+/* Created on:     2012/9/20 0:41:54                            */
 /*==============================================================*/
 
 
@@ -46,7 +46,7 @@ create table cus_bank_account
    name                 varchar(50) not null,
    account              varchar(50) not null,
    type                 varchar(8) not null,
-   note                 varchar(250),
+   remark               varchar(250),
    primary key (id)
 );
 
@@ -74,7 +74,7 @@ create table cus_fee
    cash_name            varchar(8) not null,
    cash_date            date not null,
    cash_amount          numeric(8,2) not null,
-   note                 varchar(250),
+   remark               varchar(250),
    primary key (id)
 );
 
@@ -103,7 +103,7 @@ create table cus_info
    UPD_DT               datetime,
    CRTD_USR_ID          bigint,
    CRTD_DT              datetime,
-   note                 varchar(250),
+   remark               varchar(250),
    primary key (id)
 );
 
@@ -146,7 +146,7 @@ create table cus_tax_account
    name                 varchar(8) not null,
    type                 varchar(8) not null,
    amount               real not null,
-   note                 varchar(250),
+   remark               varchar(250),
    primary key (id)
 );
 
@@ -169,7 +169,7 @@ create table sys_dept
    id                   bigint not null auto_increment,
    name                 varchar(50) not null,
    parent_id            bigint not null,
-   note                 varchar(250),
+   remark               varchar(250),
    primary key (id)
 );
 
@@ -182,7 +182,7 @@ create table sys_dictionary
    data_type            varchar(4) not null,
    data_code            varchar(8) not null,
    data_name            varchar(50),
-   note                 varchar(250),
+   remark               varchar(250),
    primary key (id)
 );
 
@@ -194,7 +194,7 @@ create table sys_post
    id                   bigint not null auto_increment,
    name                 varchar(50) not null,
    parent_id            bigint not null,
-   note                 varchar(250),
+   remark               varchar(250),
    primary key (id)
 );
 
@@ -207,7 +207,7 @@ create table sys_right
    name                 varchar(50) not null,
    right_url            varchar(200) not null,
    parent_id            bigint not null,
-   note                 varchar(250),
+   remark               varchar(250),
    primary key (id)
 );
 
@@ -218,7 +218,7 @@ create table sys_role
 (
    id                   bigint not null auto_increment,
    name                 varchar(50) not null,
-   note                 varchar(250),
+   remark               varchar(250),
    primary key (id)
 );
 
@@ -253,7 +253,7 @@ create table sys_user
    UPD_DT               datetime,
    CRTD_USR_ID          bigint,
    CRTD_DT              datetime,
-   note                 varchar(250),
+   remark               varchar(250),
    primary key (id)
 );
 
