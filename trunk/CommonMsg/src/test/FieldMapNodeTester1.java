@@ -16,7 +16,7 @@ import com.mt.common.xml.XMLUtil;
  * 
  * 2012-7-26 Ryan
  */
-public class FieldMapNodeTest {
+public class FieldMapNodeTester1 {
 
 	private static Document initXml() throws ParserConfigurationException, SAXException, IOException{
 		StringBuilder sb = new StringBuilder();
