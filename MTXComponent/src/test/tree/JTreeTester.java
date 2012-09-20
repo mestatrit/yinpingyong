@@ -66,7 +66,10 @@ import com.mt.common.gui.MTXComponent.MTXFileChooser;
 import com.mt.util.W3CDomUtil;
 
 /**
- * JTree使用样例 1、实现节点拖拽功能 2、节点添加右键事件 3、节点添加ToolTip显示
+ * JTree使用样例 
+ * 1、实现节点拖拽功能 
+ * 2、节点添加右键事件 
+ * 3、节点添加ToolTip显示
  */
 public class JTreeTester {
 
@@ -155,8 +158,7 @@ public class JTreeTester {
 	 * @param leafTag
 	 * @return
 	 */
-	private DefaultMutableTreeNode getTreeNodeFromXML(Element root,
-			String leafTag) {
+	private DefaultMutableTreeNode getTreeNodeFromXML(Element root, String leafTag) {
 		DefaultMutableTreeNode treeNode = new DefaultMutableTreeNode(root);
 
 		if (root.getTagName().equals(leafTag)) {
@@ -177,12 +179,9 @@ public class JTreeTester {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>");
 		stringBuilder.append("<FuncGroup icon=\"\" id=\"FT01\" name=\"功能定义\">");
-		stringBuilder
-				.append("<FuncGroup icon=\"/new/home.png\" id=\"FT02\" name=\"系统功能\">");
-		stringBuilder
-				.append("<Function class=\"\" hotkey=\"\" icon=\"\" id=\"FT0223\" name=\"从当前布局生成新视角(Ctrl+N)\"/>");
-		stringBuilder
-				.append("<Function class=\"\" hotkey=\"\" icon=\"/16/config.png\" id=\"FT0215\" name=\"全局参数设置\"/>");
+		stringBuilder.append("<FuncGroup icon=\"/new/home.png\" id=\"FT02\" name=\"系统功能\">");
+		stringBuilder.append("<Function class=\"\" hotkey=\"\" icon=\"\" id=\"FT0223\" name=\"从当前布局生成新视角(Ctrl+N)\"/>");
+		stringBuilder.append("<Function class=\"\" hotkey=\"\" icon=\"/16/config.png\" id=\"FT0215\" name=\"全局参数设置\"/>");
 		stringBuilder.append("</FuncGroup>");
 		stringBuilder.append("</FuncGroup>");
 		return stringBuilder.toString();
@@ -197,10 +196,7 @@ public class JTreeTester {
 	}
 
 	private void exportXMLFromDoc(Document doc, File file) {
-		TransformerFactory tFactory = TransformerFactory
-				.newInstance(
-						"com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl",
-						null);
+		TransformerFactory tFactory = TransformerFactory.newInstance("com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl",null);
 		try {
 			Transformer transformer = tFactory.newTransformer();
 			DOMSource source = new DOMSource(doc);
@@ -219,8 +215,7 @@ public class JTreeTester {
 			@Override
 			public void run() {
 				try {
-					UIManager.setLookAndFeel(UIManager
-							.getSystemLookAndFeelClassName());
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 				} catch (Exception e) {
 				}
 				new JTreeTester();
@@ -250,14 +245,13 @@ public class JTreeTester {
 			TreePath path = getPathForRow(selRow);
 			Object lastPath = path.getLastPathComponent();
 			if (lastPath instanceof DefaultMutableTreeNode) {
-				Element v = (Element) ((DefaultMutableTreeNode) lastPath)
-						.getUserObject();
+				Element v = (Element) ((DefaultMutableTreeNode) lastPath).getUserObject();
 				String html = "<html><table border='0' cellspacing='2' cellpadding='0'>"
-						+ "<tr><td>名称:  </td><td>"
-						+ v.getAttribute("name")
-						+ "</td></tr>"
-						+ "<tr><td>ID:  </td><td>"
-						+ v.getAttribute("id") + "</td></tr>";
+								+ "<tr><td>名称:  </td><td>"
+								+ v.getAttribute("name")
+								+ "</td></tr>"
+								+ "<tr><td>ID:  </td><td>"
+								+ v.getAttribute("id") + "</td></tr></table></html>";
 				return html;
 			}
 
@@ -278,27 +272,26 @@ public class JTreeTester {
 	 */
 	class ElementTreeRenderer extends DefaultTreeCellRenderer {
 
-		public Component getTreeCellRendererComponent(JTree tree, Object value,
-				boolean sel, boolean expanded, boolean leaf, int row,
-				boolean hasFocus) {
-			JLabel label = (JLabel) super.getTreeCellRendererComponent(tree,
-					value, sel, expanded, leaf, row, hasFocus);
+		public Component getTreeCellRendererComponent(JTree tree, Object value,boolean sel, boolean expanded, boolean leaf, int row,boolean hasFocus) {
+			JLabel label = (JLabel) super.getTreeCellRendererComponent(tree,value, sel, expanded, leaf, row, hasFocus);
 			if (value instanceof DefaultMutableTreeNode) {
-				Element v = (Element) ((DefaultMutableTreeNode) value)
-						.getUserObject();
+				Element v = (Element) ((DefaultMutableTreeNode) value).getUserObject();
+				/**
+				 * 从树形节点中，选取name属性，加载节点
+				 */
 				String name = v.getAttribute("name");
 				label.setText(name);
 			}
-
+			
 			return label;
 		}
 	}
 
 	/**
 	 * JTree自定义编辑器
+	 * 基于JTextField来编辑树的单元格
 	 */
-	class ElementTreeEditor extends AbstractCellEditor implements
-			TreeCellEditor {
+	class ElementTreeEditor extends AbstractCellEditor implements TreeCellEditor {
 
 		private JTextField text = new JTextField();
 		private JPanel panel = new JPanel(new BorderLayout());
@@ -310,7 +303,6 @@ public class JTreeTester {
 
 				public void actionPerformed(ActionEvent e) {
 					stopCellEditing();
-
 				}
 			});
 			panel.setOpaque(false);
@@ -326,8 +318,7 @@ public class JTreeTester {
 			return this.value.getUserObject();
 		}
 
-		public Component getTreeCellEditorComponent(JTree tree, Object value,
-				boolean isSelected, boolean expanded, boolean leaf, int row) {
+		public Component getTreeCellEditorComponent(JTree tree, Object value, boolean isSelected, boolean expanded, boolean leaf, int row) {
 			this.value = (DefaultMutableTreeNode) value;
 			Element e = (Element) this.value.getUserObject();
 			String name = e.getAttribute("name");
@@ -368,21 +359,25 @@ public class JTreeTester {
 			this.dt = new DropTarget(tree, this);
 		}
 
-		public void dragEnter(DropTargetDragEvent dtde) {
+		public void dragEnter(DropTargetDragEvent dtde) 
+		{
+			
 		}
 
-		public void dragExit(DropTargetEvent dte) {
+		public void dragExit(DropTargetEvent dte) 
+		{
+			
 		}
 
-		public void dragOver(DropTargetDragEvent dtde) {
+		public void dragOver(DropTargetDragEvent dtde) 
+		{
+			
 		}
 
 		public void drop(DropTargetDropEvent dtde) {
 			Point point = dtde.getLocation();
-			TreePath parentpath = tree.getClosestPathForLocation(point.x,
-					point.y);
-			DefaultMutableTreeNode pNode = (DefaultMutableTreeNode) parentpath
-					.getLastPathComponent();
+			TreePath parentpath = tree.getClosestPathForLocation(point.x,point.y);
+			DefaultMutableTreeNode pNode = (DefaultMutableTreeNode) parentpath.getLastPathComponent();
 
 			if (pNode == oldnode) {
 				dtde.rejectDrop();// 不接受
@@ -402,15 +397,16 @@ public class JTreeTester {
 			dtde.rejectDrop();// 不接受
 		}
 
-		public void dropActionChanged(DropTargetDragEvent dtde) {
+		public void dropActionChanged(DropTargetDragEvent dtde) 
+		{
+			
 		}
 	}
 
 	/**
 	 * 实现节点拖拽时的具体实现
 	 */
-	class ElementDragSourceTree implements DragSourceListener,
-			DragGestureListener {
+	class ElementDragSourceTree implements DragSourceListener, DragGestureListener {
 
 		private JTree tree;
 
@@ -419,45 +415,35 @@ public class JTreeTester {
 		public ElementDragSourceTree(JTree tree) {
 			this.tree = tree;
 			ds = new DragSource();
-			ds.createDefaultDragGestureRecognizer(this.tree,
-					DnDConstants.ACTION_MOVE, this);
+			ds.createDefaultDragGestureRecognizer(this.tree, DnDConstants.ACTION_MOVE, this);
 		}
 
 		public void dragDropEnd(DragSourceDropEvent dsde) {
 			if (dsde.getDropSuccess() && dropNode != null) {
 				if (dropNode.isLeaf()) {
 					// 删除
-					Element oldp = (Element) ((DefaultMutableTreeNode) oldnode
-							.getParent()).getUserObject();
+					Element oldp = (Element) ((DefaultMutableTreeNode) oldnode.getParent()).getUserObject();
 					Element olde = (Element) oldnode.getUserObject();
 					oldp.removeChild(olde);
-					((DefaultTreeModel) tree.getModel())
-							.removeNodeFromParent(oldnode);
+					((DefaultTreeModel) tree.getModel()).removeNodeFromParent(oldnode);
 
 					// 新增
-					DefaultMutableTreeNode dropParent = (DefaultMutableTreeNode) dropNode
-							.getParent();
+					DefaultMutableTreeNode dropParent = (DefaultMutableTreeNode) dropNode.getParent();
 					int index = dropParent.getIndex(dropNode);
-					((DefaultTreeModel) tree.getModel()).insertNodeInto(
-							oldnode, dropParent, index);
+					((DefaultTreeModel) tree.getModel()).insertNodeInto(oldnode, dropParent, index);
 					Element pe = (Element) dropParent.getUserObject();
-					pe.insertBefore((Element) oldnode.getUserObject(),
-							(Element) dropNode.getUserObject());
+					pe.insertBefore((Element) oldnode.getUserObject(),(Element) dropNode.getUserObject());
 				} else {
 					// 删除
-					Element oldp = (Element) ((DefaultMutableTreeNode) oldnode
-							.getParent()).getUserObject();
+					Element oldp = (Element) ((DefaultMutableTreeNode) oldnode.getParent()).getUserObject();
 					Element olde = (Element) oldnode.getUserObject();
 					oldp.removeChild(olde);
-					((DefaultTreeModel) tree.getModel())
-							.removeNodeFromParent(oldnode);
+					((DefaultTreeModel) tree.getModel()).removeNodeFromParent(oldnode);
 
 					// 新增
-					((DefaultTreeModel) tree.getModel()).insertNodeInto(
-							oldnode, dropNode, 0);
+					((DefaultTreeModel) tree.getModel()).insertNodeInto(oldnode, dropNode, 0);
 					Element pe = (Element) dropNode.getUserObject();
-					pe.insertBefore((Element) oldnode.getUserObject(),
-							pe.getFirstChild());
+					pe.insertBefore((Element) oldnode.getUserObject(),pe.getFirstChild());
 				}
 			}
 
@@ -482,15 +468,13 @@ public class JTreeTester {
 			}
 			oldnode = (DefaultMutableTreeNode) path.getLastPathComponent();
 
-			ds.startDrag(dge, DragSource.DefaultMoveDrop,
-					new TransferableTreeNode(path), this);
+			ds.startDrag(dge, DragSource.DefaultMoveDrop,new TransferableTreeNode(path), this);
 		}
 	}
 
 	static public class TransferableTreeNode implements Transferable {
 
-		public static final DataFlavor TREE_PATH_FLAVOR = new DataFlavor(
-				TreePath.class, "Tree Path");
+		public static final DataFlavor TREE_PATH_FLAVOR = new DataFlavor(TreePath.class, "Tree Path");
 		private DataFlavor flavors[] = { TREE_PATH_FLAVOR };
 		private TreePath path;
 
@@ -498,8 +482,7 @@ public class JTreeTester {
 			path = tp;
 		}
 
-		public Object getTransferData(DataFlavor flavor)
-				throws UnsupportedFlavorException, IOException {
+		public Object getTransferData(DataFlavor flavor) throws UnsupportedFlavorException, IOException {
 			if (isDataFlavorSupported(flavor)) {
 				return (Object) path;
 			} else {
@@ -537,12 +520,10 @@ public class JTreeTester {
 				Object lastPath = path.getLastPathComponent();
 				if (lastPath instanceof DefaultMutableTreeNode) {
 					tree.setSelectionPath(path);
-					Element v = (Element) ((DefaultMutableTreeNode) lastPath)
-							.getUserObject();
+					Element v = (Element) ((DefaultMutableTreeNode) lastPath).getUserObject();
 					JPopupMenu popup = new JPopupMenu();
-					JMenuItem[] items = { new JMenuItem("修改"),
-							new JMenuItem("删除") };
-					String[] cmds = { "updateOP", "delOP" };
+					JMenuItem[] items = { new JMenuItem("新增"),new JMenuItem("修改"),new JMenuItem("删除") };
+					String[] cmds = { "addDI", "updateOP", "delOP" };
 					for (int i = 0; i < items.length; i++) {
 						items[i].setActionCommand(cmds[i]);
 						items[i].addActionListener(eListener);
@@ -582,8 +563,7 @@ public class JTreeTester {
 				addTreeNode(node, tNode, tree);
 				Object[] pathObject = tp.getPath();
 				Object[] nPathObject = new Object[pathObject.length + 1];
-				System.arraycopy(pathObject, 0, nPathObject, 0,
-						pathObject.length);
+				System.arraycopy(pathObject, 0, nPathObject, 0,pathObject.length);
 				nPathObject[pathObject.length] = node;
 				dataTree.startEditingAtPath(new TreePath(nPathObject));
 			}
@@ -623,7 +603,5 @@ public class JTreeTester {
         Element pe = (Element) parent.getUserObject();
         pe.insertBefore((Element) node.getUserObject(), pe.getFirstChild());
         ComponentResizer.expandTree(tree);
-
     }
-
 }
