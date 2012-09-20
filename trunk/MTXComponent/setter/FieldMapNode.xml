@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root name="根节点">
+	<node name="子节点1" class=""/>
+	<node name="子节点2" class=""/>
+	<node name="子节点3" class=""/>
+</root>

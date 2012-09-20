@@ -15,6 +15,7 @@
 四、树形组件
 	1、MTFieldMapNodeCheckBoxTree2：带复选框且支持搜索的树（建议使用）
 	2、MTFieldMapNodeCheckBoxTree：带复选框且支持搜索的树
+	3、MTFieldMapNodeTree：支持FileMapNode结构的树	
 		
 五、超链接组件
 	1、JXHyperlink：超链接组件
@@ -22,4 +23,6 @@
 六、文件选择组件
 	1、MTXFileChooser：文件选择组件
 	
+待解决问题：
+1、JTreeTester实现节点新增功能、解决拖拽到根节点出现异常的BUG
 	
