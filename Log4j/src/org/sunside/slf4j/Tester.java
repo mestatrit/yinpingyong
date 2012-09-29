@@ -1,4 +1,4 @@
-package test;
+package org.sunside.slf4j;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
