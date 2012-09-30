@@ -7,26 +7,21 @@ public class UserManagerProxyImpl implements UserManager {
 
 	private UserManager userManager;
 	
-	private SecurityManager securityManager = new SecurityManager();
-	
 	public UserManagerProxyImpl(UserManager userManager) {
 		this.userManager = userManager;
 	}
 	
 	@Override
 	public boolean addUser(String userName) {
-		if (securityManager.checkSecurity(userName)){
-			return userManager.addUser(userName);	
-		}
-		else 
-		{
-			System.out.println("权限检查不通过...");
-			return false;
-		}
+		System.out.println("add user before...");
+		
+		return userManager.addUser(userName);	
 	}
 
 	@Override
 	public boolean removeUser(Integer id) {
+		System.out.println("remove user before...");
+		
 		return userManager.removeUser(id);
 	}
 
