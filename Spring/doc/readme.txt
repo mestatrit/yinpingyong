@@ -47,6 +47,20 @@
 		3、使用配置（<aop:config>标签）将POJO转成一个切面
 		自动代理，大大简化的AOP的配置，在创建Bean的时候，通过自动代理，寻找符合切入点的切面，实现AOP的自动代理。
 二、企业Spring
+5、使用数据库
+	5.1、Spring的数据访问哲学
+		1、Spring数据访问构建的异常体系：细化了异常种类、将检查异常转变成非受检异常。
+		2、数据访问模板化：比如，SqlMapClientTemplate,通过模板方法，简化了大量的代码
+		3、使用DAO支持类：比如基于iBatis的DAO（XXXDaoImpl extends SqlMapClientDaoSupport）。
+	5.2、配置数据源
+		一般使用commons包下的DBCP（database connection pool）方式
+	5.3、在Spring中使用JDBC
+	5.4、在Spring中使用Hibernate
+	5.5、在Spring中使用JPA
+	5.6、在Spring中使用iBatis
+		1、Dao实现类中直接注入SqlMapClientTemplate
+		2、定义基于iBatis的Dao实现类(倾向于使用,配置更加优雅)
+	5.7、缓存	
 三、Spring客户端
 
 总结：
