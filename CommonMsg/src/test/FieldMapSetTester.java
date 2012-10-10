@@ -25,10 +25,22 @@ public class FieldMapSetTester {
 		fms.addAttr(new Field("attr2", "a2"));
 		FieldMap fm = new FieldMap("map1");
 		fm.putField("node1", "n1");
+		fm.putField("node1", "n1");
 		fm.putField("node2", "n1");
 		fm.putField("node3", "n1");
-		fm.putField("node4", "n1");
 		fms.addFieldMap(fm);
+		System.out.println(FieldMapUtil.createXMLString(fms));
+		
+		/**
+		 * 更新
+		 */
+		for (int index=0;index<fms.getFieldMapCount();index++) {
+			FieldMap fieldMap =  fms.getFieldMap(index);
+			Field field = fieldMap.getField("node1");
+			if (field != null) {
+				field.setValue("haha");
+			}
+		}
 		System.out.println(FieldMapUtil.createXMLString(fms));
 		
 		/**

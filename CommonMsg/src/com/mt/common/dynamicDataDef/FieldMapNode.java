@@ -399,7 +399,7 @@ public class FieldMapNode extends FieldMap {
     public void updateFieldValue(String fName, Object value) {
         Field f = this.getField(fName);
         if (f != null) {
-            f.setValue(f);
+            f.setValue(value);
         }
         for (int i = 0; i < getChildCount(); i++) {
             getChildAt(i).updateFieldValue(fName, value);
