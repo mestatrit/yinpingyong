@@ -6,6 +6,35 @@
 		2、ClassPathXmlAppliationContext
 		3、FileSystemXmlAppliationContext
 			...
+		4、bena的生命周期：
+			第一步：创建
+			第二步：设置属性
+			第三步：设置名称
+					{
+					设置Bean的名称到BeanFactory（如果实现了BeanNameAwave）
+					设置Bean的BeanFactory回调(如果实现了BeanFactoryAwave)
+					设置Bean的ApplicationContext（如果实现了ApplicationContextAwave）
+					}
+			第四步：预处理
+					{
+					初始化之前的预处理（如果实现了BeanPostProcessor，调用postProcessBeforeInitialization方法）
+					}
+			第五步：初始化
+					{
+					（如果实现了InitializingBean）
+					如果自定义初始化，继续调用自定义初始化
+					}
+			第六步：预处理
+					{
+					初始化之后的预处理（如果实现了BeanPostProcessor，调用postProcessAfterInitialization方法）
+					}
+			第七步：使用
+			第八步：销毁
+					{
+					（如果实现了DisposableBean）
+					如果自定义销毁，继续调用自定义初始化
+					}
+					
 	2.2、创建Bean
 	2.3、注入Bean
 		1、单一属性注入（构造、setter）
@@ -61,6 +90,9 @@
 		1、Dao实现类中直接注入SqlMapClientTemplate
 		2、定义基于iBatis的Dao实现类(倾向于使用,配置更加优雅)
 	5.7、缓存	
+
+6、事物管理
+		
 三、Spring客户端
 
 总结：
