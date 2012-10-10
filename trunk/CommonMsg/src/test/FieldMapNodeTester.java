@@ -8,6 +8,7 @@ import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 import com.mt.common.dynamicDataDef.FieldMapNode;
+import com.mt.common.dynamicDataDef.FieldMapNodeTraversalHandler;
 import com.mt.common.dynamicDataDef.FieldMapUtil;
 import com.mt.common.xml.XMLUtil;
 
@@ -36,15 +37,26 @@ public class FieldMapNodeTester {
 		rootNode.addChildNode(childNode);
 		
 		childNode = new FieldMapNode("item1");
-		childNode.addField("name", "子节点2");
+		childNode.addField("name", "子节点1");
 		rootNode.addChildNode(childNode);
 		System.out.println(FieldMapUtil.createXMLString(rootNode));
 		
 		/**
-		 * 更新节点信息
+		 * 递归更新节点值方式一
 		 */
-		rootNode.searchNode("name", "叶子节点").getField("name").setValue("haha");
+		rootNode.updateFieldValue("name", "haha");
 		System.out.println(FieldMapUtil.createXMLString(rootNode));
+		
+		/**
+		 * 递归更新节点值方式二
+		 */
+		rootNode.nodeTraversal(new FieldMapNodeTraversalHandler() {
+			
+			@Override
+			public void process(FieldMapNode node) {
+				//TODO
+			}
+		});
 	}
 
 }
