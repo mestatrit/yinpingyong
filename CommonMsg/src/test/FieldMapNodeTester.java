@@ -39,6 +39,12 @@ public class FieldMapNodeTester {
 		childNode.addField("name", "子节点2");
 		rootNode.addChildNode(childNode);
 		System.out.println(FieldMapUtil.createXMLString(rootNode));
+		
+		/**
+		 * 更新节点信息
+		 */
+		rootNode.searchNode("name", "叶子节点").getField("name").setValue("haha");
+		System.out.println(FieldMapUtil.createXMLString(rootNode));
 	}
 
 }
