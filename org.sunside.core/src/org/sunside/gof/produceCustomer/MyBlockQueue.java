@@ -1,4 +1,4 @@
-package org.sunside.core.gof.prodcust;
+package org.sunside.gof.produceCustomer;
 
 import java.util.ArrayList;
 import java.util.List;

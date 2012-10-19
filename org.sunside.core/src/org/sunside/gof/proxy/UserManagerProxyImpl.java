@@ -1,4 +1,4 @@
-package org.sunside.core.gof.proxy;
+package org.sunside.gof.proxy;
 
 /**
  * 代理实现角色(静态代理实现)

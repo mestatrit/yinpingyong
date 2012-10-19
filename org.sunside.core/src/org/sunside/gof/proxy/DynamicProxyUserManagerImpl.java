@@ -1,4 +1,4 @@
-package org.sunside.core.gof.proxy;
+package org.sunside.gof.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
