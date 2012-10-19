@@ -1,4 +1,4 @@
-package org.sunside.core.gof.singleton;
+package org.sunside.gof.singleton;
 
 /**
  * 结合缓存（首次调用时，才创建对象），实现单例

@@ -1,4 +1,4 @@
-package org.sunside.core.gof.proxy;
+package org.sunside.gof.proxy;
 
 /**
  * 真实实现角色 

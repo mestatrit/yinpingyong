@@ -1,4 +1,4 @@
-package org.sunside.core.gof.proxy;
+package org.sunside.gof.proxy;
 
 public class ClientTester {
 

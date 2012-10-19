@@ -1,4 +1,4 @@
-package org.sunside.core.gof.singleton;
+package org.sunside.gof.singleton;
 
 /**
  * @author:Ryan
