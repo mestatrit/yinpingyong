@@ -1,4 +1,4 @@
-package org.sunside.core.thread.lock;
+package org.sunside.core.collection;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,7 +15,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * @author:Ryan
  * @date:2012-10-20
  */
-public class MyConditionBlockingQueue {
+public class MyBlockingQueue {
 
 	private final int MAX_SIZE = 10;
 	
@@ -69,7 +69,7 @@ public class MyConditionBlockingQueue {
 	
 	public static void main(String[] args) {
 		
-		final MyConditionBlockingQueue blockingQueue = new MyConditionBlockingQueue();
+		final MyBlockingQueue blockingQueue = new MyBlockingQueue();
 		
 		final ExecutorService threadPool = Executors.newCachedThreadPool();
 		
