@@ -16,7 +16,24 @@
 		1、全局配置：Setter：使用启用缓存、命名空间、延迟加载等
 		2、事物配置：transactionManager
 		3、SqlMap映射文件配置：sqlMap
+
+4、使用已映射语句
+	4.1、从基础开始
+		SqlMapClient API(
+		queryForObject(id,prepared,result)\
+		queryForList(id,prepared,result,skip,max)\
+		queryForMap(id,prepared,key,value))
 		
+		类关系：
+		SqlMapExexutor、SqlMapTransactionManager、java.sql.connection
+		SqlMapSession、SqlMapClient、SqlMapClientImpl
+	4.2、使用Select标签
+		使用内联参数映射#、$
+		注意：方式Sql注入
+	4.3、使用参数映射
+	
+	注意：显示配置参数和结果集的映射（少用自动映射以及map），可以提高效率。	
+			
 三、在真实世界中的应用
 
 四、使用秘诀
@@ -26,4 +43,7 @@
 	如果是单独使用iBatis执行事物，使用GENERIC-CI值；直接注入sqlMapclient;
 	如果是集成Sprinf，使用SPRING值；采用基于模板方法执行事务；
 	
-
+2、java.sql.Statement和java.sql.PreparedStatement:
+	1、PreparedStatement继承Statement
+	2、PreparedStatement是预编译的，所以对执行批处理可以大大提高性能，同时安全性也高于Statement
+	3、如果执行单个sql，因为PreparedStatement需要预处理，所以开销比Statement大
