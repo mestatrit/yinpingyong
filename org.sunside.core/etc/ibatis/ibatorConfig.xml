@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ibatorConfiguration PUBLIC "-//Apache Software Foundation//DTD Apache iBATIS Ibator Configuration 1.0//EN" "http://ibatis.apache.org/dtd/ibator-config_1_0.dtd" >
+<ibatorConfiguration>
+	
+	<classPathEntry location="G:\comstar\org.sunside.core\lib\db\mysql-connector-java-5.0.8-bin.jar" />
+	
+	<ibatorContext id="context1">
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/fmis" userId="root"
+			password="" />
+
+		<javaModelGenerator targetPackage="org.sunside.frame.ibatis.repository.model"
+			targetProject="org.sunside.core" />
+
+		<sqlMapGenerator targetPackage="org.sunside.frame.ibatis.repository.dao.sql"
+			targetProject="org.sunside.core" />
+
+		<daoGenerator targetPackage="org.sunside.frame.ibatis.repository.dao"
+			targetProject="org.sunside.core" type="GENERIC-CI" />
+		
+		<table tableName="sys_user">
+			<columnOverride column="id" jdbcType="INTEGER" javaType="Integer" />
+			<columnOverride column="user_name" />
+		</table>
+
+	</ibatorContext>
+</ibatorConfiguration>
