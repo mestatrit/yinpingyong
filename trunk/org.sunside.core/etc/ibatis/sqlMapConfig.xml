@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	
+	<!-- ./表示当前目录的上一个目录 -->
+	<properties resource="./jdbc.properties" />
+	
+	<settings 
+		useStatementNamespaces="true"
+		cacheModelsEnabled="true"
+		enhancementEnabled="true"
+		errorTracingEnabled="true"
+		lazyLoadingEnabled="true"/>
+	
+	<transactionManager type="JDBC" commitRequired="false">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="${jdbc.driverClassName}" />
+			<property name="JDBC.ConnectionURL" value="${jdbc.url}" />
+			<property name="JDBC.Username" value="${jdbc.username}" />
+			<property name="JDBC.Password" value="${jdbc.password}" />
+		</dataSource>
+	</transactionManager>
+		
+	<sqlMap resource="org/sunside/frame/ibatis/repository/dao/sql/sys_user_SqlMap.xml" />
+
+</sqlMapConfig>
