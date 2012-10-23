@@ -20,9 +20,19 @@
 4、使用已映射语句
 	4.1、从基础开始
 		SqlMapClient API(
+		--基于SqlMapExecuror：
 		queryForObject(id,prepared,result)\
 		queryForList(id,prepared,result,skip,max)\
 		queryForMap(id,prepared,key,value))
+		insert(id,prepare);
+		update(id,prepare);
+		delete(id,prepare);
+		startBatch();
+		executeBatch();
+		--基于SqlMapTransactionManager:
+		startTransaction();
+		commintTransaction();
+		endTransaction();
 		
 		类关系：
 		SqlMapExexutor、SqlMapTransactionManager、java.sql.connection
@@ -33,7 +43,26 @@
 	4.3、使用参数映射
 	
 	注意：显示配置参数和结果集的映射（少用自动映射以及map），可以提高效率。	
-			
+
+5、执行非查询语句
+	5.1、更新数据的基本方法
+		--XXSqlMap.xml:
+		delete\update\insert\executor
+		statement\produce
+		preparedMap\resultMap
+		sql\typeAlias
+		chacheModel
+		--SqlMaoConfig.xml
+		proprerty
+		setter
+		transactionManager
+		sqlMap
+		typeAlias
+	5.2、插入数据
+	5.3、更新和删除数据
+	5.4、批量处理
+	5.5、使用存储过程
+					
 三、在真实世界中的应用
 
 四、使用秘诀
@@ -47,3 +76,9 @@
 	1、PreparedStatement继承Statement
 	2、PreparedStatement是预编译的，所以对执行批处理可以大大提高性能，同时安全性也高于Statement
 	3、如果执行单个sql，因为PreparedStatement需要预处理，所以开销比Statement大
+
+3、事物
+	使用SqlMapClient.startTranaction/commitTranaction/endTransaction编程式事物；
+	SqlMapClientTemplate也是用此方式
+4、批量处理	
+	使用SqlMapClient.startBatch\executeBatch开始批量处理，注意批量处理的sql类型一定要求是一样的。	
