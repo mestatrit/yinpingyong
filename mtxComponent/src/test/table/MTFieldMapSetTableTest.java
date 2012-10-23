@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -97,6 +98,18 @@ public class MTFieldMapSetTableTest {
 		 * 默认CheckBox不做渲染，使其有别于其他的单元格
 		 */
 		mtTable.setDefaultRenderer(Boolean.class, new CheckBoxCellRender());
+		
+		mtTable.addPopupMenuSeparatorFirst();
+		JMenuItem item = new JMenuItem("新增");
+		item.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		mtTable.addPopupMenuItemFirst(item);
+		mtTable.setPopupMenuVisible(true);
 		
 		resultPanel.add(new JScrollPane(mtTable),BorderLayout.CENTER);
 	}
