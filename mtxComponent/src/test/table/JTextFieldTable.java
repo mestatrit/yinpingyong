@@ -46,11 +46,21 @@ public class JTextFieldTable {
 	
 	static {
 		FieldMap fm = new FieldMap("DETAIL");
-		fm.putField("INDEX", 1);
+		fm.putField("INDEX", true);
 		fm.putField("REMIND_TIME", "12:01");
-		for (int index = 0; index<10; index++) {
-			fms.addFieldMap(fm);
-		}
+		FieldMap fm2 = new FieldMap("DETAIL");
+		fm2.putField("INDEX", true);
+		fm2.putField("REMIND_TIME", "13:01");
+		FieldMap fm3 = new FieldMap("DETAIL");
+		fm3.putField("INDEX", true);
+		fm3.putField("REMIND_TIME", "14:01");
+		FieldMap fm4 = new FieldMap("DETAIL");
+		fm4.putField("INDEX", true);
+		fm4.putField("REMIND_TIME", "15:01");
+		fms.addFieldMap(fm);
+		fms.addFieldMap(fm2);
+		fms.addFieldMap(fm3);
+		fms.addFieldMap(fm4);
 		
 		try {
 			mf = new MaskFormatter("##:##");
@@ -105,7 +115,12 @@ public class JTextFieldTable {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				FieldMap fm = new FieldMap("DETAIL");
+				fm.putField("INDEX", false);
+				fm.putField("REMIND_TIME", "");
+				fms.addFieldMap(fm);
+				mtTable.setFieldMapSet(fms);
+				mtTable.refreshData();
 			}
 		});
 		
@@ -148,14 +163,6 @@ public class JTextFieldTable {
 		});
 	}
 	
-	private void print() {
-		
-		for (int index=0;index < fms.getFieldMapCount(); index ++) {
-			System.out.println(fms.getFieldMap(index).getStringValue("REMIND_TIME"));
-			
-		}
-	}
-	
 	class TimeTableCellEditor extends AbstractCellEditor implements TableCellEditor {
 		
 		private JFormattedTextField textField;
@@ -171,12 +178,12 @@ public class JTextFieldTable {
 			defaultFormatterFactory = new DefaultFormatterFactory();
 			defaultFormatterFactory.setDefaultFormatter(mf);
 			textField.setFormatterFactory(defaultFormatterFactory);
-			textField.setFocusLostBehavior(JFormattedTextField.PERSIST);
+//			textField.setFocusLostBehavior(JFormattedTextField.PERSIST);
 		}
 		
 		@Override
 		public Object getCellEditorValue() {
-			return textField.getText();
+			return textField.getValue();
 		}
 
 		@Override
@@ -184,9 +191,9 @@ public class JTextFieldTable {
 				Object value, boolean isSelected, int row, int column) {
 			
 			if (value != null) {
-				textField.setText(value.toString());	
-			}
-			print();
+				textField.setValue(value);
+			} 
+			
 			return textField;
 		}
 		
@@ -204,7 +211,7 @@ public class JTextFieldTable {
 			defaultFormatterFactory = new DefaultFormatterFactory();
 			defaultFormatterFactory.setDefaultFormatter(mf);
 			this.setFormatterFactory(defaultFormatterFactory);
-			this.setFocusLostBehavior(JFormattedTextField.PERSIST);
+//			this.setFocusLostBehavior(JFormattedTextField.PERSIST);
 		}
 		
 		@Override
@@ -213,7 +220,7 @@ public class JTextFieldTable {
 				int column) {
 			
 			if (value != null) {
-				this.setText(value.toString());	
+				this.setValue(value);
 			} 
 			
 			return this;
