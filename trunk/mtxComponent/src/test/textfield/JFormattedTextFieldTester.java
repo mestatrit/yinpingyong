@@ -1,4 +1,4 @@
-package test.field;
+package test.textfield;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
