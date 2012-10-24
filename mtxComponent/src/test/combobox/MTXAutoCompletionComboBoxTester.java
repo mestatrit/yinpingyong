@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -131,8 +130,11 @@ public class MTXAutoCompletionComboBoxTester {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				boxPanel.getListItem();
-				boxPanel.getCurFListItem();
+				Object obj = boxPanel.getAutoCSelectedItem();
+				
+				if (obj != null) {
+					JOptionPane.showConfirmDialog(frame, ((NameCodeItem)obj).getName());
+				}
 			}
 		});
 		
@@ -140,7 +142,11 @@ public class MTXAutoCompletionComboBoxTester {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				Object obj = doubleBoxPanel.getAutoCSelectedItem();
 				
+				if (obj != null) {
+					JOptionPane.showConfirmDialog(frame, ((NameCodeItem)obj).getName());
+				}
 			}
 		});
 	}
