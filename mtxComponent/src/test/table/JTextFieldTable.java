@@ -183,6 +183,11 @@ public class JTextFieldTable {
 		
 		@Override
 		public Object getCellEditorValue() {
+			try {
+				//确保修改的内容可以进入单元格（并且是符合格式的）
+				textField.commitEdit();
+			} catch (ParseException e) {
+			}
 			return textField.getValue();
 		}
 
