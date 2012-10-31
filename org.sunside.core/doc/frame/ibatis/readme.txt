@@ -27,6 +27,7 @@
 		insert(id,prepare);
 		update(id,prepare);
 		delete(id,prepare);
+		--批处理
 		startBatch();
 		executeBatch();
 		--基于SqlMapTransactionManager:
@@ -41,6 +42,7 @@
 		使用内联参数映射#、$
 		注意：方式Sql注入
 	4.3、使用参数映射
+	4.4、自动映射结果集合和显示结果映射
 	
 	注意：显示配置参数和结果集的映射（少用自动映射以及map），可以提高效率。	
 
@@ -62,9 +64,38 @@
 	5.3、更新和删除数据
 	5.4、批量处理
 	5.5、使用存储过程
-					
+6、使用高级查询技术
+	6.1、在Ibatis中使用XML（参数和结果集）
+	6.2、使用已映射的语句（延迟加载和避免N+1次查询）					
+7、事务
+	7.1、事务是什么（原子性、一致性、隔离性、持久性）
+	7.2、自动事务（默认iBatis所有的操作都是包含在事物中）
+	7.3、局部事务（一般的事物）
+	7.4、全局事务（分布式事务）
+	7.5、定制事务（注入Connection，基于Connection定制事务）
+	7.6、事务划界(Service层)
+8、动态sql调用
+							
 三、在真实世界中的应用
-
+9、使用高速缓存提高新能
+	9.1、简单的实例：（chcheModel Tag）
+	9.2、iBatis高速缓存理念（作用于持久层上的缓存）
+	9.3、缓存模型中的属性（id\type\readOnly\serial）
+	9.4、缓存模型中的标签（flushOnExecute、flushInterva）
+	9.5、缓存模型类型（内存、FIFO、LRU、OSCache）
+	9.6、缓存模型策略
+		内存模式：缓存可读写的
+		FIFO：缓存旧的静态数据
+		LRU：缓存经常使用的数据
+	注意：作用于持久层上的缓存策略，用于DB单独被APP操作的时候。
+	例子：
+	<cacheModel id='' type='' readOnly='true' serial='false'>
+		<flushInterval hour/mininter/secode/=''/>
+		<flushExecuter statement=''>
+		...
+		<property name='size/reference-type' value='30/weak/soft/strong'/>
+	</cacheModel>
+10、iBatis的数据访问对象		
 四、使用秘诀
 
 补充：
