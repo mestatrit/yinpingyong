@@ -122,10 +122,36 @@
 9、在Spring中建立契约优先服务
 	使用Trang生成XSD文件
 10、Spring消息
-			
+11、Spring和EJB			
+12、访问企业服务
+	12.1JNDI
+	12.2EMial
+	12.3任务调度
+	12.4JMX
 
 三、Spring客户端
-
+13、处理web请求
+	13.1、开始SpringMVC之旅
+		1、DispatcherServlet:前端Servlet控制器 
+		2、HandlerMapping(根据请求找到对应的控制器)
+		3、Controller:控制器（处理业务逻辑）
+		4、ModelAndView（包装返回结果集）
+		5、ViewResolver：视图解析器（结果集映射到视图）
+		6、View
+		
+		总结：处理web请求过程
+		第一步：用户发送请求，DispatcherServlet接收到请求
+		第二步：DispatcherServlet通过请求映射器（handlerMapping），找到对应的控制器（请求处理器）
+				如果没有实现配置，那么默认根据BeanNameUrlHandlerMapping寻找
+		第三步：控制器Controller,处理业务逻辑
+		第四步：控制器获取ModelAndView对象，并返回给DispatcherServlet,准备获取展示视图
+		第五步：Dispatcherservlet通过调用视图解析器ViewResolver，找到对应的视图
+				最简单的就是通过InternalResourceViewResolver，通过匹配的方式，找到ciew
+		第六步：视图展示结果
+		
+	13.2、将请求映射到控制器			
+					
+	
 总结：
 1、DI实现对象之间的解耦
 2、AOP实现交叉事物和对象的解耦
