@@ -7,25 +7,21 @@
 	
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:roadrantz-service.xml</param-value>
+		<param-value>/WEB-INF/fmis-*.xml</param-value>
 	</context-param>
-	
-	
+		
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	
-	
 	<servlet>
-		<servlet-name>roadrantz</servlet-name>
+		<servlet-name>fmis</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
-	
-	
 	<servlet-mapping>
-		<servlet-name>roadrantz</servlet-name>
+		<servlet-name>fmis</servlet-name>
 		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping>
 	
