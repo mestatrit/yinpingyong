@@ -30,6 +30,7 @@ public class FieldMapSetTester {
 		fm.putField("node3", "n1");
 		fms.addFieldMap(fm);
 		System.out.println(FieldMapUtil.createXMLString(fms));
+		System.err.println("-------------------1------------------------");
 		
 		/**
 		 * 更新
@@ -42,6 +43,7 @@ public class FieldMapSetTester {
 			}
 		}
 		System.out.println(FieldMapUtil.createXMLString(fms));
+		System.err.println("--------------------2----------------------");
 		
 		/**
 		 * 读取文件构造FieldMapSet对象
@@ -49,6 +51,17 @@ public class FieldMapSetTester {
 		Document doc = XMLUtil.createDocumentFromPath("/FieldMapSet.xml");
 		FieldMapSet fms1 = FieldMapUtil.createFieldMapSet(doc.getDocumentElement());
 		System.out.println(FieldMapUtil.createXMLString(fms1));
+		System.err.println("----------------------3---------------------");
+		
+		/**
+		 * 删除FieldMap
+		 */
+		for (int index=0; index < fms1.getFieldMapCount(); index ++) {
+			if (fms1.getFieldMap(index).getStringValue("field1").equals("f2")){
+				fms1.removeFieldMap(index);
+				index--;
+			}
+		}
+		System.out.println(FieldMapUtil.createXMLString(fms1));
 	}
-
 }
