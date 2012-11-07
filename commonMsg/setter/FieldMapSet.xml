@@ -6,4 +6,16 @@
 		<field2>f1</field2>
 		<field3>f1</field3>
 	</map1>
+	
+	<map2>
+		<field1>f2</field1>
+		<field2>f1</field2>
+		<field3>f1</field3>
+	</map2>
+	
+	<map2>
+		<field1>f2</field1>
+		<field2>f1</field2>
+		<field3>f1</field3>
+	</map2>
 </set>
