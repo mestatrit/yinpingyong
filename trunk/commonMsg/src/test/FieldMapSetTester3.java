@@ -32,8 +32,9 @@ public class FieldMapSetTester3 {
 				String tagName = childElement.getTagName();
 				if (tagName.equalsIgnoreCase("detail")) {
 					FieldMapSet fms = FieldMapUtil.createFieldMapSet(childElement);
-					System.out.println("++++++++++++++++++++++++++++++++++++++");
-					System.out.println(FieldMapUtil.createXMLString(fms));
+					/*System.out.println("++++++++++++++++++++++++++++++++++++++");
+					System.out.println(FieldMapUtil.createXMLString(fms));*/
+					System.out.println("PORTFOLIO_SEQ=" + fms.getAttr("PORTFOLIO_SEQ"));
 				}
 			}
 		}
