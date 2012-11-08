@@ -149,6 +149,10 @@
 				最简单的就是通过InternalResourceViewResolver，通过匹配的方式，找到ciew
 		第六步：视图展示结果
 		
+		/******************************************************************************************************/
+		说明：类似于Struct2默认加载src目录下的struct.xml，使用sprinbgMVC时，必须指定XXX-servlet.xml，用于配置控制器等。
+		/******************************************************************************************************/
+		
 	13.2、将请求映射到控制器			
 					
 	
@@ -156,3 +160,30 @@
 1、DI实现对象之间的解耦
 2、AOP实现交叉事物和对象的解耦
 3、IOC负责Bean的创建、管理等
+4、jar包依赖关系：
+	核心包（必须添加）：
+	org.springframework.core
+	org.springframework.beans
+	org.springframework.context
+	org.springframework.asm
+	org.springframework.expression
+	
+	JDBC:
+	org.springframework.jdbc
+	org.springframework.orm
+	
+	事物：
+	org.springframework.aop
+	org.springframework.aspects
+	org.springframework.transaction
+	
+	MVC:
+	org.springframework.web
+	org.springframework.web.servlet
+	
+	JMS:
+	org.springframework.jms
+	
+	其他：
+	企业服务：org.springframework.context.support
+	XML操作：org.springframework.oxm
