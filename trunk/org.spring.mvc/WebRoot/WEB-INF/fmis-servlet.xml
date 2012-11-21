@@ -3,9 +3,37 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-	<bean name="/home.htm" class="org.sunside.spring.mvc.controller.HomePageController">
+	<description>配置WEB层的上下文</description>
+	
+	<!-- 配置请求控制器 -->
+	<bean id="homePageController" class="org.sunside.spring.mvc.controller.HomePageController">
 		
 	</bean>
 	
+	<!--基于BeanNameUrlHandlerMapping的配置，bena使用name属性，而不是id
+	<bean name="/home.htm" class="org.sunside.spring.mvc.controller.HomePageController"></bean>
+	-->
+	
+	<!-- 请求映射控制器 -->
+	<!-- 没有配置控制器的情况下，Spring自动使用 BeanNameUrlHandlerMapping作为请求映射控制器-->
+	<bean id="simpleUrlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/home.htm">homePageController</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 最基本的视图解析器 -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 视图位置 -->
+		<property name="prefix">
+			<value>/WEB-INF/jsp/</value>
+		</property>
+		<!-- 视图文件后缀 -->
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean>	
 	
 </beans>

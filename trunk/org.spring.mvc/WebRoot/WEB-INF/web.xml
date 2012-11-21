@@ -10,10 +10,12 @@
 		<param-value>/WEB-INF/fmis-*.xml</param-value>
 	</context-param>
 		
+	<!-- 加载Spring上下文 -->	
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	
+	<!-- 配置前端控制器 -->
 	<servlet>
 		<servlet-name>fmis</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
