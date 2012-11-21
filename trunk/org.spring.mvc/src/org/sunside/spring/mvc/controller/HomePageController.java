@@ -12,7 +12,10 @@ public class HomePageController extends AbstractController {
 	protected ModelAndView handleRequestInternal(HttpServletRequest arg0,
 			HttpServletResponse arg1) throws Exception {
 		
-		return null;
+		
+		ModelAndView mv = new ModelAndView("home", "test", "test");
+		
+		return mv;
 	}
 
 }
