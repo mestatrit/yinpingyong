@@ -7,7 +7,11 @@
 	
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/fmis-*.xml</param-value>
+		<param-value>
+			classpath:fmis-data.xml
+			classpath:fmis-security.xml
+			classpath:fmis-service.xml
+		</param-value>
 	</context-param>
 		
 	<!-- 加载Spring上下文 -->	
@@ -19,6 +23,12 @@
 	<servlet>
 		<servlet-name>fmis</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		
+		<init-param>
+			<description>WEB层的上下文配置路径(不指定,默认从WEB-INF下读取)</description>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:fmis-servlet.xml</param-value>
+		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
@@ -27,6 +37,20 @@
 		<url-pattern>*.htm</url-pattern>
 	</servlet-mapping>
 	
+	<servlet-mapping>
+		<servlet-name>fmis</servlet-name>
+		<url-pattern>*.rss</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>fmis</servlet-name>
+		<url-pattern>*.xls</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>fmis</servlet-name>
+		<url-pattern>*.pdf</url-pattern>
+	</servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
