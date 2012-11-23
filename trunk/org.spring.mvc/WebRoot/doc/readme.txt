@@ -15,7 +15,12 @@
 	注：前段控制器DispatchServlet、
 		请求映射控制器HandlerMapping
 		(如果没有配置映射控制器，前端控制器使用BeanNameUrlHandlerMapping作为默认器)、
+		例如：
+		<!--基于BeanNameUrlHandlerMapping的配置，bena使用name属性，而不是id
+		<bean name="/home.htm" class="org.sunside.spring.mvc.controller.HomePageController"></bean>
+		-->
+	
 		控制器Controller
 		视图解析器ViewResolver
 		(最简单的视图解析器为InternalResourceViewResolver，其通过ModelAndView中的view属性找到对应的视图)	
-	 
+	 	
