@@ -1,4 +1,5 @@
-13、开始Spring之旅
+13、处理WEB请求
+13.1、开始Spring之旅
 1、建议将上下文分散到应用系统的上下文中：
 	安全层-xxx_security.xml
 	Web层-xxx_servlet.xml
@@ -22,5 +23,43 @@
 	
 		控制器Controller
 		视图解析器ViewResolver
-		(最简单的视图解析器为InternalResourceViewResolver，其通过ModelAndView中的view属性找到对应的视图)	
+		(最简单的视图解析器为InternalResourceViewResolver，其通过ModelAndView中的view属性找到对应的视图)
+
+13.2、将请求映射到控制器
+1、四种请求控制映射器
+	默认：BeanNameUrlHandlerMapping
+	简单的控制器：SimpleURLHandlerMapping
+	基于控制器名称：ControllerClassNameHandlerMapping
+	基于注解的映射器：CommonsPathMapHandlerMapping
+
+13.3、用控制器处理请求
+1、控制器的分类
+	核心控制器	->命令控制器		->表单控制器		->向导控制器
+			   	      多动作控制器
+	（Controller->AbstractController->BaseCommandController->AbstractCommandController
+									  MultiActionController	 AbstractFormController->SimpleFormController
+															 						AbstractWizedFormController）
+    注意：使用场景：
+    	1、extends 	AbstractController(最简单)
+    	2、extends 	AbstractCommandController（处理命令）
+    	3、extends 	SimpleFormController（处理表单）
+    	4、extends 	AbstractWizedFormController	（使用向导-处理复杂表单）										 						
+	后三者，3.0建议使用注解方式取代！！！
+
+14、渲染WEB视图	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
 	 	
