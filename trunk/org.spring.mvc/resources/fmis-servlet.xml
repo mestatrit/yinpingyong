@@ -9,17 +9,27 @@
 	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>
-				<prop key="/home.htm">homePageController</prop>
+				<prop key="/acd.htm">acd</prop>
+				<prop key="/accd.htm">accd</prop>
+				<prop key="/sfcd.htm">sfcd</prop>
 				<prop key="/error.htm">errorController</prop>
 			</props>
 		</property>
 	</bean>
 	
 	<!-- 2.配置请求控制器 -->
-	<bean id="homePageController" class="org.sunside.spring.mvc.controller.HomePageController">
-		
+	<bean id="acd" class="org.sunside.spring.mvc.controller.AbstractControllerDemo">
 	</bean>
 	
+	<bean id="accd" class="org.sunside.spring.mvc.controller.AbstractCommandControllerDemo">
+	</bean>	
+	
+	<bean id="sfcd" class="org.sunside.spring.mvc.controller.SimpleFormControllerDemo">
+		<property name="formView" value="home"/>
+		<property name="successView" value="home"/>
+	</bean>
+	
+	<!-- 请求直接跳转到视图 -->
 	<bean id="errorController" class="org.springframework.web.servlet.mvc.UrlFilenameViewController"/>
 	
 	<!-- 3.配置异常处理 -->	
