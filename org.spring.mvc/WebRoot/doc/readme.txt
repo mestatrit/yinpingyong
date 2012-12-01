@@ -47,6 +47,27 @@
 	后三者，3.0建议使用注解方式取代！！！
 
 14、渲染WEB视图	
+14.1、视图解析
+	ViewResolver
+	-->
+	BeanNameViewResolver
+	XmlViewResolver
+	InternalViewResolver
+		
+14.2、使用Spring模板
+1、使用form标签，包括所有场景下的组件标签
+	例如：form:form
+2、渲染存在在属性文件中
+	例如：spring:message
+3、显示错误，也是使用form:errors标签		
+
+注意：渲染外部属性文件配置，以及错误放在属性文件中，也是为了国际化。
+
+14.3、使用Tile设计页面布局
+	
+	
+	
+	
 	
 
 
