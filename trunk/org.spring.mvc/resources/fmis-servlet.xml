@@ -5,6 +5,16 @@
 	
 	<description>配置WEB层的上下文</description>
 	
+	<!-- 0.配置渲染在外部文件中 -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<list>
+				<value>messages</value>
+	        	<value>errors</value>
+			</list>
+		</property>
+	</bean>
+	
 	<!-- 1.配置请求映射控制器 -->
 	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
@@ -42,7 +52,7 @@
 	</bean>	
 	
 	<!-- 4.配置视图解析器 -->
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
 			<value>/WEB-INF/jsp/</value>
 		</property>
@@ -50,5 +60,20 @@
 			<value>.jsp</value>
 		</property>
 	</bean>	
+	
+	<bean id="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order">
+			<value>1</value>
+		</property>
+	</bean>
+	
+	<bean id="xmlViewResolver" class="org.springframework.web.servlet.view.XmlViewResolver">
+		<property name="location">
+			<value>classpath:fmis-views.xml</value>
+		</property>
+		<property name="order">
+			<value>2</value>
+		</property>
+	</bean>
 	
 </beans>
