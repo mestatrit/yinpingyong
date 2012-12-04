@@ -1,4 +1,4 @@
-package org.sunside.test.core;
+package org.sunside.core.generics;
 
 /**
  * @author:Ryan
