@@ -9,6 +9,8 @@ import java.lang.annotation.Target;
  * 自定义注解
  * 注释类型所适用的程序元素的种类：类（接口）、方法
  * 注释类型的注释要保留多久：运行时刻
+ * 
+ * 内部定义三个方法（属性），其中number提供默认值.
  * @author:Ryan
  * @date:2012-12-5
  */
