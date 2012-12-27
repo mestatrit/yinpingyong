@@ -3,6 +3,9 @@ package test;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -106,12 +109,40 @@ public class FieldMapSetTester4 {
 		return stringBuilder.toString();
 	}
 	
+	private String transfer2CommonMsg(ArrayList<Map.Entry<PaymentSchd, FieldMapSet>> sortList) {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(FieldMapUtil.XMLHeader);
+		stringBuilder.append("<PAYMENT_SCHD>");
+		
+		for (Map.Entry<PaymentSchd, FieldMapSet> entry : sortList) {
+			stringBuilder.append(FieldMapUtil.createXMLString(entry.getValue(), false));
+		}
+		
+		stringBuilder.append("</PAYMENT_SCHD>");
+		
+		return stringBuilder.toString();
+	}
+	
+	/**
+	 * 按照BondN.number降序方式对Map排序
+	 * @param map
+	 * @return
+	 */
+	public ArrayList<Map.Entry<PaymentSchd, FieldMapSet>> getSortedHashMapByValue(Map<PaymentSchd, FieldMapSet> map) {
+		ArrayList<Map.Entry<PaymentSchd, FieldMapSet>> fmsList = new ArrayList<Map.Entry<PaymentSchd, FieldMapSet>>(map.entrySet());
+		
+		Collections.sort(fmsList, new PaymentSchdComparator());
+		
+		return fmsList;
+	}
+	
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
 		FieldMapSetTester4 t4 = new FieldMapSetTester4();
 		
 		Document doc = XMLUtil.createDocumentFromPath("/NewFile3.xml");
 		Element root = doc.getDocumentElement();
 		NodeList children = root.getChildNodes();
+		
 		for(int index = 0; index < children.getLength(); index++) {
 			
 			Node child = children.item(index);
@@ -122,11 +153,44 @@ public class FieldMapSetTester4 {
 				if (name.equals("PAYMENT_SCHD")) {
 					FieldMapSet fms = FieldMapUtil.createFieldMapSet(childElement);
 					Map<PaymentSchd, FieldMapSet> fmsMap = t4.processFieldMapSet(fms);
-					String str = t4.transfer2CommonMsg(fmsMap);
-					doc.replaceChild(XMLUtil.createDocument(str).getDocumentElement(), childElement);
+					System.out.println(t4.transfer2CommonMsg(fmsMap));
+					System.out.println("===========================");
+					ArrayList<Map.Entry<PaymentSchd, FieldMapSet>> sortList = t4.getSortedHashMapByValue(fmsMap);
+					System.out.println(t4.transfer2CommonMsg(sortList));
 				}
 			}
 		}
+	}
+	
+	/**
+	 * 用于付息资料的排序，保证最后一笔交易的更新时间为最大
+	 */
+	class PaymentSchdComparator implements Comparator<Map.Entry<PaymentSchd, FieldMapSet>>{
+
+		@Override
+		public int compare(Entry<PaymentSchd, FieldMapSet> o1, Entry<PaymentSchd, FieldMapSet> o2) {
+			int comparison = 0;
+			
+			FieldMapSet fms1 = o1.getValue();
+			FieldMapSet fms2 = o2.getValue();
+			
+			if (fms1!=null && fms2!=null) {
+				Field field1 = fms1.getAttr("MODIFY_DATE");
+				Field field2 = fms2.getAttr("MODIFY_DATE");
+				if (field1 != null && field2 != null) {
+					
+					Date date1 = getDateValue(field1.getValue().toString());
+					Date date2 = getDateValue(field2.getValue().toString());
+					
+					if (date1!=null && date2!=null) {
+						comparison = date1.compareTo(date2);
+					}
+				}
+			}
+			
+			return comparison;
+		}
+		
 	}
 	
 	class PaymentSchd{
