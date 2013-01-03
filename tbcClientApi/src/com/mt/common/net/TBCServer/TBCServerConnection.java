@@ -57,7 +57,7 @@ public class TBCServerConnection {
 
     static public TBCServerConnection createTBCServerConnection(TBCServerConnectionInfo info) throws IOException,
             TBCServerConnectionException {
-
+    	
         CommunicationsMode mode = null;
         if (info.communicationsMode == NetConstants.SocketMode) {
             mode = new SocketCommunicationsMode();
