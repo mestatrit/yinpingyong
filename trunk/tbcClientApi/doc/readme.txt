@@ -72,7 +72,7 @@
 			带有缓存功能的异步请求：第二次发送请求时，直接从本地缓存中获取结果：
 			requestRemoteService_LocalSave(String fid,Object obj,int timeOut,CommonMsgCallback callBack)
 			
-			不需要处理响应的请求：
+			不需要处理响应的请求TBCServerConnection.java：
 			requestRemoteService(String fid,Object obj)
 		
 		(2)注册请求：等待服务端主动推送
