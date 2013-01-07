@@ -1,0 +1,177 @@
+﻿<2013-01-07 16:59:35,484>[ INFO] com.mt.common.net.TBCServer.internal.MsgDispatcher - CMS[C599|1000]调用对应Callback
+<?xml version="1.0" encoding="UTF-8"?>
+<FuncGroup>
+<FuncGroup name="系统功能" icon="/new/home.png" id="FT02">
+	<Function name="从当前布局生成新视角(Ctrl+N)" icon="" hotkey="" class="com.mt.functions.system.PerspectiveBuilder" id="FT0223" />
+	<Function name="全局参数设置" icon="/16/config.png" hotkey="" class="com.mt.cms.settingFunction.settingView.GlobalSettingView" id="FT0215" />
+	<Function name="用户参数设置" icon="/16/config.png" hotkey="" class="com.mt.cms.settingFunction.settingView.UserSettingView" id="FT0219" />
+	<Function name="交易未处理提醒" icon="" hotkey="" class="com.mt.functions.messageBox.ExaminationRemindSetter" id="FT0225" />
+	<Function name="代理人管理" icon="/16/dlr.png" hotkey="" class="com.mt.cms.settingFunction.settingView.AgentUserConfigFrame" id="FT0224" />
+	<Function name="提示信息查询与设置" icon="/16/mInfo.png" hotkey="" class="com.mt.cms.portfolio.FProductQuery" id="FT0206" />
+	<Function name="打印当前画面" icon="/16/frameprint.png" hotkey="" class="com.mt.functions.system.ActivateViewPrinter" id="FT0208" />
+	<Function name="打印主画面" icon="/16/frameprint.png" hotkey="" class="com.mt.functions.system.MainViewPrinter" id="FT0220" />
+	<Function name="页面设置" icon="/print.gif" hotkey="" class="com.mt.functions.system.PrinterSetting" id="FT0210" />
+	<Function name="版本号" icon="" hotkey="" class="com.mt.launch.VersionView" id="FT0221" />
+	<Function name="退出" icon="/new/exitmenu.png" hotkey="" class="com.mt.functions.system.SystemLogout" id="FT0212" />
+</FuncGroup>
+<FuncGroup name="债券定价分析" icon="/new/BondAnalyse.png" id="FT04">
+	<Function name="固定利率债券分析" icon="" hotkey="" class="com.mt.functions.chart.fixedRateAnalysis.FixedYieldAnalysisFrame" id="FT0401" />
+	<Function name="浮动利率债券分析" icon="" hotkey="" class="com.mt.functions.chart.floatingRateAnalysis.FloatingRateAnalysisHandler" id="FT0402" />
+	<Function name="债券基本资料" icon="" hotkey="" class="com.mt.functions.info.bondInfo.BondView" id="FT0403" />
+	<Function name="债券信息搜索" icon="" hotkey="" class="com.mt.cms.common.bondSearch.PSearchViewer" id="FT0404" />
+</FuncGroup>
+<FuncGroup name="计算器" icon="/new/calculator.png" id="FT05">
+	<Function name="测试" icon="" hotkey="" class="com.test.Test" id="FT0514" />
+	<Function name="债券评价指标" icon="" hotkey="" class="com.mt.functions.evaluation.bond.SimCalFrame" id="FT0501" />
+	<Function name="质押式回购试算" icon="" hotkey="" class="com.mt.functions.evaluation.repo.CloseRepoView" id="FT0502" />
+	<Function name="买断式回购试算" icon="" hotkey="" class="com.mt.functions.evaluation.repo.OpenRepoView" id="FT0503" />
+	<Function name="IRS试算" icon="" hotkey="" class="com.mt.cms.settingFunction.IRSCalculation.IRSCalcuclatorView" id="FT0513" />
+	<Function name="IRS情景分析" icon="" hotkey="" class="com.mt.cms.settingFunction.IRSAnalyzer.IRSAnalyzerView" id="FT0515" />
+	<Function name="短期利率转换" icon="" hotkey="" class="com.mt.functions.evaluation.RateConverter" id="FT0511" />
+	<Function name="债券敏感性分析" icon="" hotkey="" class="com.mt.functions.chart.sensitivity.BondSenitivityView" id="FT0504" />
+	<Function name="投组敏感性分析" icon="" hotkey="" class="com.mt.cms.chartGraph.sensitivity.PortfolioSentivityView" id="FT0510" />
+	<Function name="债券置换" icon="" hotkey="" class="com.mt.functions.evaluation.bond.BondExchangeView" id="FT0505" />
+</FuncGroup>
+<FuncGroup name="图形" icon="/new/chart2.png" id="FT06">
+	<Function name="实时收益率曲线" icon="" hotkey="" class="com.mt.functions.chart.bondYieldGraph.RealtimeYieldView" id="FT0607" />
+	<Function name="实时收益率曲线(非公开)" icon="" hotkey="" class="com.mt.functions.chart.bondYieldGraph.RealtimeYieldChartI" id="FT0608" />
+	<Function name="历史图形" icon="" hotkey="" class="com.mt.fis.chartGraph.HisChartFrame" id="FT0605" />
+	<Function name="收益率曲线" icon="" hotkey="" class="com.mt.functions.chart.bondYieldGraph.BondYieldView" id="FT0601" />
+	<Function name="收益率曲线(非公开)" icon="" hotkey="" class="com.mt.functions.chart.bondYieldGraph.BondYieldChartI" id="FT0609" />
+	<Function name="外汇掉期曲线" icon="" hotkey="" class="com.mt.functions.chart.fxSwapGraph.FXSwapView" id="FT0606" />
+	<Function name="关键年期比较" icon="" hotkey="" class="com.mt.functions.chart.keyRateGraph.KeyRateChartView" id="FT0603" />
+	<Function name="散点图" icon="" hotkey="" class="com.mt.functions.chart.scatteredGraph.ScatteredGraphView" id="FT0604" />
+	<Function name="历史交易对比图形" icon="" hotkey="" class="com.mt.fis.chartGraph.ComChartFrame" id="FT0610" />
+</FuncGroup>
+<FuncGroup name="投组与交易数据维护" icon="/new/weihu.png" id="FT07">
+	<Function name="投资组合维护" icon="" hotkey="" class="com.mt.cms.portfolio.maintain.PortfolioMaintainFrame" id="FT0701" />
+	<Function name="投组债券行权设定" icon="" hotkey="" class="com.mt.cms.portfolio.PortfolioBondOptConfig" id="FT0702" />
+	<Function name="原始交易自动导入配置" icon="" hotkey="" class="com.mt.cms.portfolio.trade.UserPortfolioConf_CMS" id="FT1214" />
+	<Function name="原始交易分配" icon="" hotkey="" class="com.mt.cms.portfolio.trade.TradeAssign_CMS" id="FT0722" />
+	<Function name="投组交易输入" icon="" hotkey="" class="com.mt.cms.portfolio.trade.TradeInput" id="FT0706" />
+	<Function name="投组交易导入" icon="" hotkey="" class="com.mt.cms.portfolio.tradeImport.TradeImportViewer" id="FT0703" />
+	<Function name="投组交易查询与维护" icon="" hotkey="" class="com.mt.cms.portfolio.trade.TradeQuery" id="FT0707" />
+	<Function name="审批单输入试算与放行" icon="" hotkey="" class="com.mt.cms.portfolio.tradeExamination.TradeExaminationHandlerWrapper" id="FT0716" />
+	<Function name="本币对话报价列表管理" icon="" hotkey="" class="com.mt.functions.quote.quoteToTE.QuoteToTETradeMainView" id="FT0728" />
+	<Function name="审批阶段维护" icon="" hotkey="" class="com.mt.cms.portfolio.tradeExamination.paramMaintain.eaaStage.EaaStageMaintainPanel" id="FT0727" />
+	<Function name="审批角色设定与查询(旧)" icon="" hotkey="" class="com.mt.cms.portfolio.tradeExamination.paramMaintain.TECharacterMaintainView" id="FT0713" />
+	<Function name="审批代理人维护" icon="" hotkey="" class="com.mt.cms.portfolio.tradeExamination.paramMaintain.eaaStage.EaaStageDeputyUserMaintainView" id="FT0730" />
+	<Function name="审批代理人设置(旧)" icon="" hotkey="" class="com.mt.cms.portfolio.tradeExamination.paramMaintain.TEAgentMaintainView" id="FT0718" />
+	<Function name="审批投组设定与查询" icon="" hotkey="" class="com.mt.cms.portfolio.tradeExamination.paramMaintain.TEPortfolioMaintainView" id="FT0714" />
+	<Function name="审批单查询" icon="" hotkey="" class="com.mt.cms.portfolio.TradeExaminationQuery.TradeExamQuery" id="FT0720" />
+	<Function name="审批规则设置(旧)" icon="" hotkey="" class="com.mt.cms.portfolio.tradeExamination.paramMaintain.TERulesMaintainView" id="FT0719" />
+	<Function name="审批仓位查询" icon="" hotkey="" class="com.mt.cms.portfolio.dataAnalyse.tePosition.TEPositionView" id="FT0731" />
+	<Function name="资产转仓位" icon="" hotkey="" class="com.mt.cms.portfolio.transformPosition.TransformPositionInputView" id="FT0723" />
+	<Function name="资产转仓位查询" icon="" hotkey="" class="com.mt.cms.portfolio.transformPosition.TransformPositionQueryView" id="FT0724" />
+	<Function name="开放式回购交易连结列表" icon="" hotkey="" class="com.mt.cms.portfolio.trade.UnmountOROpenRepoTradeQuery" id="FT0725" />
+	<Function name="卖券未配对查询" icon="" hotkey="" class="com.mt.cms.portfolio.UnpairedSellBond.UnpairedSellBondQueryView" id="FT0726" />
+	<Function name="一级市场交易其它手续费维护" icon="" hotkey="" class="com.mt.cms.portfolio.trade.tradeEditor.BondUWDTradeInput.BondUWDExtraFeePanel" id="FT1223" />
+	<Function name="二级市场分销卖出交易连结列表" icon="" hotkey="" class="com.mt.cms.portfolio.trade.tradeEditor.BondUWDTradeInput.UnmountBondUWDTradeQuery" id="FT1224" />
+	<Function name="一级市场交易未复核列表" icon="" hotkey="" class="com.mt.cms.portfolio.BUWDTrade.ExamBUWDTrade.QueryToExamBUWDTradePanel" id="FT1401" />
+	<Function name="一级市场手续费复核列表" icon="" hotkey="" class="com.mt.cms.portfolio.BUWDTrade.ExamBUWDTrade.QueryToExamBUWDFeePanel" id="FT0729" />
+	<Function name="活期存入支取复核" icon="" hotkey="" class="com.mt.cms.portfolio.currentCheck.CurrentCheckMainView" id="FT1226" />
+	<Function name="交易修改删除复核" icon="" hotkey="" class="com.mt.cms.portfolio.modifyCheckQuery.ModifyCheckQueryView" id="FT0732" />
+</FuncGroup>
+<FuncGroup name="风险管理" icon="/new/edkg.png" id="FT08">
+	<Function name="信用风险群组及额度设置" icon="" hotkey="" class="com.mt.cms.creditRisk.creditRiskMainView.PType1SettingView" id="FT0812" />
+	<Function name="市场风险群组及限额设置" icon="" hotkey="" class="com.mt.cms.creditRisk.creditRiskMainView.PType3SettingView" id="FT0814" />
+	<Function name="信用风险额度设置" icon="" hotkey="" class="com.mt.cms.creditRisk.creditRiskMainView.PType0SettingView" id="FT0811" />
+	<Function name="市场风险限额设置" icon="" hotkey="" class="com.mt.cms.creditRisk.creditRiskMainView.PType2SettingView" id="FT0813" />
+	<Function name="债券质押比设定功能" icon="" hotkey="" class="com.mt.cms.creditRisk.BondRateSettingView" id="FT0809" />
+	<Function name="风险敞口参数设置" icon="" hotkey="" class="com.mt.cms.creditRisk.orgUtilization.UtilizationFrame" id="FT0802" />
+	<Function name="信用风险敞口公式设定" icon="" hotkey="" class="com.mt.cms.creditRisk.formula.FormulaSetView " id="FT0808" />
+	<Function name="信用风险检核项设置" icon="" hotkey="" class="com.mt.cms.creditRisk.riskReport.RiskRuleSetting" id="FT0803" />
+	<Function name="授信监控" icon="" hotkey="" class="com.mt.cms.creditRisk.riskReport.PType01Report" id="FT0815" />
+	<Function name="授权监控" icon="" hotkey="" class="com.mt.cms.creditRisk.riskReport.PType23Report3" id="FT0816" />
+	<Function name="发行主体额度监控报表" icon="" hotkey="" class="com.mt.cms.creditRisk.riskReport.IssuerRiskReport" id="FT0804" />
+	<Function name="交易对手未交割额度监控报表" icon="" hotkey="" class="com.mt.cms.creditRisk.riskReport.PSRRiskReport" id="FT0805" />
+	<Function name="机构天期管理" icon="" hotkey="" class="com.mt.cms.creditRisk.TenorManageView" id="FT0810" />
+</FuncGroup>
+<FuncGroup name="自定义数据维护" icon="/new/touzhi.png" id="FT09">
+	<Function name="自定义资产发行人管理" icon="" hotkey="" class="com.mt.cms.instrumentManager.customAsset.CustomIssuerView" id="FT0921" />
+	<Function name="自定义资产价格管理" icon="" hotkey="" class="com.mt.cms.instrumentManager.customAsset.AssetPriceView" id="FT0920" />
+	<Function name="本机构活存利率维护" icon="" hotkey="" class="com.mt.cms.portfolio.maintain.OrgRateMaintainPanel" id="FT0911" />
+	<Function name="自定义债券维护" icon="" hotkey="" class="com.mt.cms.instrumentManager.customBond.CustomerBondFrame" id="FT0910" />
+	<Function name="自定义资产维护" icon="" hotkey="" class="com.mt.cms.instrumentManager.customAsset.CustomAssetView" id="FT0919" />
+	<Function name="债券价格自定义输入及维护" icon="" hotkey="" class="com.mt.cms.portfolio.bondPrice.CustomPriceView" id="FT0903" />
+	<Function name="自定义收益率曲线维护" icon="" hotkey="" class="com.mt.cms.portfolio.sharedYieldLine.CustomYieldCurveView" id="FT0904" />
+	<Function name="资金成本维护" icon="" hotkey="" class="com.mt.cms.portfolio.maintain.capCost.CapCostView" id="FT0909" />
+	<Function name="交易对手新增与维护" icon="" hotkey="" class="com.mt.functions.counterPartyInfo.CptyFrame" id="FT0906" />
+	<Function name="行内信评设定" icon="" hotkey="" class="com.mt.functions.customData.OrgRatingView" id="FT0913" />
+	<Function name="行内债券信评设定" icon="" hotkey="" class="com.mt.functions.customData.OrgBondRatingView" id="FT0915" />
+	<Function name="本机构行业类别维护" icon="" hotkey="" class="com.mt.functions.info.industryType.IndustryTypeView" id="FT0916" />
+	<Function name="本机构清算账户信息维护" icon="" hotkey="" class="com.mt.functions.counterPartyInfo.OrgItselfAccountManager" id="FT0908" />
+	<Function name="资金交易对手授信额度导入" icon="" hotkey="" class="com.mt.cms.portfolio.ExtendCredit.ExtendCreditImportPanel" id="FT0912" />
+	<Function name="账户维护" icon="" hotkey="" class="com.mt.functions.trade.AccountMaintain" id="FT0914" />
+	<Function name="交易品种群组维护" icon="" hotkey="" class="com.mt.cms.portfolio.maintain.NriskTradeTypeMaintainPanel" id="FT0917" />
+	<Function name="止损止盈价格维护" icon="" hotkey="" class="com.mt.cms.portfolio.maintain.StopLossProfitMaintainView" id="FT0918" />
+	<Function name="本机构资产类别维护" icon="" hotkey="" class="com.mt.wms.portfolio.AssetClassMaintenance" id="FT0922" />
+</FuncGroup>
+<FuncGroup name="损益与风险分析" icon="/new/analyse.png" id="FT10">
+	<Function name="损益分析" icon="" hotkey="" class="com.mt.cms.portfolio.dataAnalyse.ProfitLossAnalyse" id="FT1013" />
+	<Function name="折溢摊损益分析" icon="" hotkey="" class="com.mt.cms.portfolio.dataAnalyse.ProfitLossAnalyse_Amort" id="FT1014" />
+	<Function name="平均成本损益分析" icon="" hotkey="" class="com.mt.cms.portfolio.dataAnalyse.ProfitLossAnalyse_Cost" id="FT1015" />
+	<Function name="收益风险评估" icon="" hotkey="" class="com.mt.cms.portfolio.dataAnalyse.yieldRisk.RiskEvaluationView" id="FT1016" />
+	<Function name="收益率曲线变动分析" icon="" hotkey="" class="com.mt.cms.portfolio.yieldCurveAnalyse.YieldCurveAnalyseView" id="FT1018" />
+	<Function name="现金流分析" icon="" hotkey="" class="com.mt.cms.portfolio.cashFlow.CashFlowFrame" id="FT1007" />
+	<Function name="重算损益" icon="" hotkey="" class="com.mt.cms.portfolio.profitLoss.RecalPLView" id="FT1020" />
+	<Function name="重算损益查询" icon="" hotkey="" class="com.mt.cms.portfolio.profitLoss.RecalPLQueryView" id="FT1021" />
+	<Function name="交易日仓位查询" icon="" hotkey="" class="com.mt.cms.portfolio.dataAnalyse.positionQuery.PositionQueryView" id="FT1017" />
+	<Function name="指定成本与FIFO余额表" icon="" hotkey="" class="com.mt.cms.portfolio.dataAnalyse.fifoBalance.FifoBalanceSheetView" id="FT1901" />
+	<Function name="指定成本与FIFO损益分析" icon="" hotkey="" class="com.mt.cms.portfolio.dataAnalyse.fifoProfitLoss.ProfitLossAnalse_FIFO_Amort" id="FT1019" />
+	<Function name="IRS损益分析" icon="" hotkey="" class="com.mt.cms.portfolio.dataAnalyse.irsProfit.IRSProfitAnalyseView" id="FT1023" />
+	<Function name="IRS风险评估" icon="" hotkey="" class="com.mt.cms.portfolio.dataAnalyse.irsProfit.IRSRiskAnalyseView" id="FT1024" />
+	<Function name="现券交易监控" icon="" hotkey="" class="com.mt.cms.portfolio.tradeMonitor.BondTradeMonitorView" id="FT1029" />
+	<Function name="质押式回购监控" icon="" hotkey="" class="com.mt.cms.portfolio.tradeMonitor.RepoTradeMonitorView" id="FT1026" />
+	<Function name="同业拆借监控" icon="" hotkey="" class="com.mt.cms.portfolio.tradeMonitor.IboTradeMonitorView" id="FT1027" />
+	<Function name="资金交易对手授信额度导入查询" icon="" hotkey="" class="com.mt.cms.portfolio.ExtendCredit.ExtendCreditQuery" id="FT1030" />
+	<Function name="开放式回购收益率监控" icon="" hotkey="" class="com.mt.cms.portfolio.tradeMonitor.HoldTradeMonitorView" id="FT1025" />
+	<Function name="质押券管理" icon="" hotkey="" class="com.mt.cms.portfolio.tradeMonitor.RepoRatioView" id="FT1031" />
+	<Function name="活跃债券资料统计" icon="" hotkey="" class="com.mt.fis.cfetsReport.activeBond.ActiveBondView" id="FT1032" />
+	<Function name="本币成交资料日报" icon="" hotkey="" class="com.mt.fis.cfetsReport.dailyReport.DailyReportView" id="FT1033" />
+	<Function name="本币成交资料月报" icon="" hotkey="" class="com.mt.fis.cfetsReport.monthlyReport.MonthlyReportView" id="FT1034" />
+</FuncGroup>
+<FuncGroup name="报表" icon="" id="FT19">
+	<Function name="报表查询及打印" icon="" hotkey="" class="com.mt.report.common.ReportView" id="FT1902" />
+</FuncGroup>
+<FuncGroup name="库存管理" icon="" id="FT18">
+	<Function name="止损止盈预警表" icon="" hotkey="" class="com.mt.cms.portfolio.dataAnalyse.StopProfitLossWarning" id="FT1803" />
+	<Function name="手动调仓" icon="" hotkey="" class="com.mt.cms.portfolio.PositionManage.PositionAdjust.PositionAdjustFrame" id="FT1802" />
+	<Function name="库存群组维护管理" icon="" hotkey="" class="com.mt.cms.portfolio.PositionManage.PositionManageFrame" id="FT1221" />
+	<Function name="当日库存明细" icon="" hotkey="" class="com.mt.cms.portfolio.PositionManage.QueryPanel.QueryByGroup" id="FT1219" />
+	<Function name="交易配券库存查询" icon="" hotkey="" class="com.mt.cms.portfolio.PositionManage.QueryPanel.QueryByDatePeriod" id="FT1217" />
+	<Function name="未来库存变动明细" icon="" hotkey="" class="com.mt.cms.portfolio.PositionManage.QueryPanel.QueryByGroupFuture" id="FT1218" />
+	<Function name="机构当日明细合计" icon="" hotkey="" class="com.mt.cms.portfolio.PositionManage.QueryPanel.QueryByGroupSummary" id="FT1801" />
+</FuncGroup>
+<FuncGroup name="扩展接口" icon="" id="FT17">
+	<Function name="K+扩展接口" icon="" hotkey="" class="com.mt.k_adapter.k_app.KondorLaunch" id="FT1701" />
+	<Function name="报表生成扩展接口" icon="" hotkey="" class="com.mt.functions.system.ReportsGenerator" id="FT1702" />
+	<Function name="机构信息维护查询" icon="" hotkey="" class="com.mt.functions.system.organization.organizationMaintain.QueryOrganizationView" id="FT1228" />
+	<Function name="数据自动导出接口" icon="" hotkey="" class="com.mt.functions.info.autoDataExporter.AutoDataExporterView" id="FT1703" />
+	<Function name="文件下载接口" icon="" hotkey="" class="com.mt.functions.system.WebFileDownloadLauncher" id="FT1704" />
+</FuncGroup>
+<FuncGroup name="维护管理" icon="" id="FT11">
+<FuncGroup name="testground" icon="" id="FT20">
+	<Function name="交易导入" icon="" hotkey="" class="com.mt.cms.portfolio.tradeImport.importNew.CMSTradeImportView" id="FT2002" />
+	<Function name="IRSAnalysis" icon="" hotkey="" class="com.mt.cms.settingFunction.IRSAnalyzer.IRSAnalyzerView" id="FT2001" />
+</FuncGroup>
+	<Function name="场务irs交易维护" icon="" hotkey="" class="com.mt.cms.portfolio.trade.FieldServicesIrsManager" id="FT1104" />
+	<Function name="交易时段维护" icon="" hotkey="" class="com.mt.functions.system.TradeSectionManager" id="FT1102" />
+	<Function name="重算损益调整" icon="" hotkey="" class="com.mt.cms.portfolio.profitLoss.RecalPLQueryAdminView" id="FT1022" />
+	<Function name="利率互换曲线维护" icon="" hotkey="" class="com.mt.functions.customData.swapCurve.SwapCurveView" id="FT1101" />
+	<Function name="利率互换曲线格式转换" icon="" hotkey="" class="com.mt.functions.customData.swapCurve.SwapCurveManager" id="FT1103" />
+<FuncGroup name="客户数据维护" icon="" id="FT12">
+	<Function name="用户上线状况" icon="" hotkey="" class="com.mt.functions.system.UserStatusQueryView" id="FT1222" />
+	<Function name="初始机构库存群组" icon="" hotkey="" class="com.mt.cms.portfolio.PositionManage.PositionInit" id="FT1220" />
+	<Function name="DebugTool" icon="" hotkey="" class="com.mt.functions.system.DebugToolView" id="FT1215" />
+	<Function name="robin_test" icon="" hotkey="" class="com.mt.cms.instrumentManager.customAsset.CustomAssetView" id="FT1212" />
+	<Function name="机构信息维护" icon="" hotkey="" class="com.mt.functions.system.organization.organizationMaintain.QueryOrganizationView" id="FT1229" />
+	<Function name="机构信息管理" icon="" hotkey="" class="com.mt.functions.system.organization.OrganizationView" id="FT1210" />
+	<Function name="CDC数据权限查询与设置" icon="" hotkey="" class="com.mt.functions.info.CDCPrice.CDCPriManager" id="FT0222" />
+	<Function name="功能和数据定义维护" icon="" hotkey="" class="com.mt.functions.system.organization.rolePrivilege.FunctionAndDataManager" id="FT1a:@" />
+	<Function name="角色配置维护" icon="" hotkey="" class="com.mt.functions.system.organization.rolePrivilege.RolePrivilegeManager" id="FT1211" />
+	<Function name="报表配置维护" icon="" hotkey="" class="com.mt.functions.system.ReportConfigQuery" id="FT1227" />
+	<Function name="自定义债券维护Old" icon="" hotkey="" class="com.mt.cms.instrumentManager.customBond.CustomerBondFrameOld" id="FT0901" />
+</FuncGroup>
+</FuncGroup>
+</FuncGroup>
