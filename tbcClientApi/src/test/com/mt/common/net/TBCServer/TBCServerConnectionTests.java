@@ -25,7 +25,7 @@ public class TBCServerConnectionTests {
 		info.name = "CMS";
 		
 		TBCServerConnection con = TBCServerConnection.createTBCServerConnection(info);
-		con.requestRemoteService("C324",new CommonMsgCallback() {
+		con.requestRemoteService("C599",new CommonMsgCallback() {
 			
 			@Override
 			public void onMessage(CommonMsg msg) {
