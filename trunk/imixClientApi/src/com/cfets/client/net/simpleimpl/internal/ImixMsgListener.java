@@ -8,6 +8,9 @@ import imix.UnsupportedMessageType;
 import imix.client.core.ImixSession;
 import imix.client.core.Listener;
 import imix.client.core.MessageCracker;
+import imix.field.FreeMsgID;
+import imix.field.FreeMsgType;
+import imix.field.Text;
 import imix.imix10.FreeFormatMessage;
 
 import org.slf4j.Logger;
@@ -33,6 +36,26 @@ public class ImixMsgListener extends MessageCracker implements Listener {
 	public void onMessage(FreeFormatMessage message) throws FieldNotFound,
 			UnsupportedMessageType, IncorrectTagValue {
 		
+		FreeMsgID msgIdField = new FreeMsgID();
+		if (message.isSetField(FreeMsgID.FIELD)) {
+			message.get(msgIdField);
+		}
+		
+		FreeMsgType fidField = new FreeMsgType();
+		if (message.isSetField(FreeMsgType.FIELD)) {
+			message.get(fidField);
+		}
+		
+		Text msgField = new Text();
+		if (message.isSetField(Text.FIELD)) {
+			message.get(msgField);
+		}
+		
+		String msgId = msgIdField.getValue();
+		String fid = fidField.getValue();
+		String msg = msgField.getValue();
+		
+		logger.info("fid+msgId={},msg={}", fid+msgId, msg);
 	}
 
 	@Override

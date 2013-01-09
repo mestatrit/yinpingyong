@@ -1,9 +1,13 @@
 package com.cfets.client.net.simpleimpl;
 
 import imix.ConfigError;
+import imix.Message;
 import imix.client.core.ImixApplication;
 import imix.client.core.ImixSession;
 import imix.client.core.ImixSessionExistingException;
+import imix.field.FreeMsgID;
+import imix.field.FreeMsgType;
+import imix.imix10.FreeFormatMessage;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
@@ -53,12 +57,26 @@ public class ImixServerConnection {
 		imixSession.start();
 	}
 	
+	private void requestRemoteService(Message message) {
+		imixSession.send(message);
+	}
+	
 	public static void main(String[] args) {
 		
 		ImixServerConnection connection = new ImixServerConnection();
 		
 		try {
+			//启动服务
 			connection.startImix();
+			
+			//发送请求
+			FreeFormatMessage freeFormatMessage = new FreeFormatMessage();
+			FreeMsgID msgId = new FreeMsgID("0001");
+			FreeMsgType fid = new FreeMsgType("F001");
+			freeFormatMessage.set(msgId);
+			freeFormatMessage.set(fid);
+			connection.requestRemoteService(freeFormatMessage);
+			
 		} catch (ConfigError e) {
 			logger.error(e.getMessage());
 			logger.error("客户端imix配置文件异常：ConfigError,ConfigError info={}", e);
