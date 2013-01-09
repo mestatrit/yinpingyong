@@ -58,6 +58,7 @@ public class ImixServerConnection {
 	}
 	
 	private void requestRemoteService(Message message) {
+		logger.info("向服务器发送消息:{}", message.toString());
 		imixSession.send(message);
 	}
 	
