@@ -29,7 +29,7 @@ public class MessageReceiveListenerImpl implements MessageReceiveListener {
 			throws FieldNotFound, IncorrectDataFormat, IncorrectTagValue,
 			RejectLogon {
 		logger.info("fromAdmin() - " + sessionID + ": " + message);
-
+		
 	}
 
 	@Override
@@ -37,7 +37,11 @@ public class MessageReceiveListenerImpl implements MessageReceiveListener {
 			throws FieldNotFound, IncorrectDataFormat, IncorrectTagValue,
 			UnsupportedMessageType, IOException {
 		logger.info("fromApp() - " + sessionID + ": " + message);
-
+		
+		String cusNumber = sessionID.getSenderCompID();
+		String userName = sessionID.getSenderSubID();
+		
+		logger.info("客户端{}发送的请求:{}", cusNumber + ">" + userName, message.toString());
 	}
 
 }
