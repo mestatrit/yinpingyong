@@ -93,8 +93,29 @@
 	发送登出请求、停止消息监听器、停止消息分派器、关闭客户端套接字	
 	
 2、重连
+	msgListener读取到null或是空的时候，说明网络出现异常，那么此时重新连接服务器
 	
 问题：
-1、心跳的处理：如果长时间未收到心跳，客户端的处理方式?
+1、心跳的处理?
+	
+	初始化时，为什么同步请求0212一次？
+	和server之间的对时
+	
+	发送请求：每个15秒钟向服务器发送不带回调的请求
+	ExecuteService es = Executors.newScheduleThreadPool(1);
+	ScheduledFuture sf = es.scheduleAtFixedRate(Runnable command,
+						  long initialDelay,
+						  long period,
+						  TimeUnit unit);
+	
+	处理响应：记录服务器和客户端的时间差（仅此而已）
+	
+2、MTBufferReader重写BufferReader的目的?
+	重写读“行”（按照自定义的结束符分割字符流）
 
+3、loginMsgFormat二种方式（plain和XML区别）？
+	支持不同的登录格式方式，目前二者格式没有区别
+	
+4、sessionKey的作用？
+	用于重连
 
