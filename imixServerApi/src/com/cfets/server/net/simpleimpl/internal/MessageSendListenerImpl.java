@@ -1,4 +1,4 @@
-package com.cfets.server.net.simpleimpl;
+package com.cfets.server.net.simpleimpl.internal;
 
 import imix.Message;
 import imix.SessionID;
