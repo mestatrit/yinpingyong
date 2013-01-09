@@ -1,4 +1,4 @@
-package com.cfets.client.net.simpleimpl;
+package com.cfets.client.net.simpleimpl.internal;
 
 import imix.FieldNotFound;
 import imix.IncorrectDataFormat;
