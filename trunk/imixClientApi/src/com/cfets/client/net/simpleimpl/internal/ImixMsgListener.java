@@ -31,33 +31,7 @@ import quickfix.DoNotSend;
 public class ImixMsgListener extends MessageCracker implements Listener {
 
 	private final static Logger logger = LoggerFactory.getLogger(ImixMsgListener.class);
-
-	@Override
-	public void onMessage(FreeFormatMessage message) throws FieldNotFound,
-			UnsupportedMessageType, IncorrectTagValue {
-		
-		FreeMsgID msgIdField = new FreeMsgID();
-		if (message.isSetField(FreeMsgID.FIELD)) {
-			message.get(msgIdField);
-		}
-		
-		FreeMsgType fidField = new FreeMsgType();
-		if (message.isSetField(FreeMsgType.FIELD)) {
-			message.get(fidField);
-		}
-		
-		Text msgField = new Text();
-		if (message.isSetField(Text.FIELD)) {
-			message.get(msgField);
-		}
-		
-		String msgId = msgIdField.getValue();
-		String fid = fidField.getValue();
-		String msg = msgField.getValue();
-		
-		logger.info("fid+msgId={},msg={}", fid+msgId, msg);
-	}
-
+	
 	@Override
 	public void fromAdmin(Message message, ImixSession session)
 			throws FieldNotFound, IncorrectDataFormat, IncorrectTagValue {
@@ -92,5 +66,30 @@ public class ImixMsgListener extends MessageCracker implements Listener {
 	public void toApp(Message message, ImixSession session) throws DoNotSend {
 		logger.info("toApp() - " + session + ": " + message);
 	}
-
+	
+	@Override
+	public void onMessage(FreeFormatMessage message) throws FieldNotFound,
+			UnsupportedMessageType, IncorrectTagValue {
+		
+		FreeMsgID msgIdField = new FreeMsgID();
+		if (message.isSetField(FreeMsgID.FIELD)) {
+			message.get(msgIdField);
+		}
+		
+		FreeMsgType fidField = new FreeMsgType();
+		if (message.isSetField(FreeMsgType.FIELD)) {
+			message.get(fidField);
+		}
+		
+		Text msgField = new Text();
+		if (message.isSetField(Text.FIELD)) {
+			message.get(msgField);
+		}
+		
+		String msgId = msgIdField.getValue();
+		String fid = fidField.getValue();
+		String msg = msgField.getValue();
+		
+		logger.info("服务器返回消息:fid+msgId={},msg={}", fid+msgId, msg);
+	}
 }
