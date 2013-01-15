@@ -9,14 +9,19 @@ import imix.core.api.UserListener;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.cfets.server.net.simpleimpl.internal.EventListenerImpl;
-import com.cfets.server.net.simpleimpl.internal.MessageReceiveListenerImpl;
-import com.cfets.server.net.simpleimpl.internal.MessageSendListenerImpl;
+import com.cfets.server.net.simpleimpl.internal.MsgBlockingQueue;
+import com.cfets.server.net.simpleimpl.internal.MsgDispatcher;
+import com.cfets.server.net.simpleimpl.internal.MsgReceiveListenerImpl;
+import com.cfets.server.net.simpleimpl.internal.MsgSendListenerImpl;
 import com.cfets.server.net.simpleimpl.internal.UserListenerImpl;
+import com.cfets.server.util.StringUtil;
 
 /**
  * ImixServerImpl
@@ -31,6 +36,10 @@ public class ImixServerImpl {
 	private static final String path = "etc/server.cfg";
 	
 	private Map<String, SessionID> user2session = new ConcurrentHashMap<String, SessionID>();
+	
+	private MsgBlockingQueue queue = new MsgBlockingQueue();
+	
+	private MsgDispatcher msgDispatcher;
 	
 	private IMIXApplication imixApplication;
 	
@@ -48,9 +57,11 @@ public class ImixServerImpl {
 		
 		userListener = new UserListenerImpl(user2session);
 		
-		messageReceiveListener = new MessageReceiveListenerImpl();
+		messageReceiveListener = new MsgReceiveListenerImpl(queue);
 		
-		messageSendListener = new MessageSendListenerImpl();
+		messageSendListener = new MsgSendListenerImpl();
+		
+		msgDispatcher = new MsgDispatcher(queue);
 	}
 	
 	private void startup() {
@@ -72,6 +83,26 @@ public class ImixServerImpl {
 		imixApplication.start();
 		
 		logger.info("imix server 启动完成.");
+		
+		msgDispatcher.startDispatch();
+		
+		logger.info("消息分派线程启动完成.");
+	}
+	
+	public void stop() {
+		try {
+			msgDispatcher.stopDispatch();
+			logger.info("消息分派线程停止.");
+			
+			imixApplication.stop();
+			logger.info("imix server 停止.");	
+		} catch (InterruptedException e) {
+			logger.error(e.getMessage());
+			logger.error("停止服务过程中出现中断异常,异常信息={}",StringUtil.getStackTrace(e));
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			logger.error("停止服务过程中出现未预料的异常,异常信息={}",StringUtil.getStackTrace(e));
+		}
 	}
 	
 	public static void main(String[] args) {

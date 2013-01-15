@@ -14,9 +14,9 @@ import org.slf4j.LoggerFactory;
  * @author:Ryan
  * @date:2013-1-9
  */
-public class MessageSendListenerImpl implements MessageSendListener {
+public class MsgSendListenerImpl implements MessageSendListener {
 
-	private final static Logger logger = LoggerFactory.getLogger(MessageSendListenerImpl.class);
+	private final static Logger logger = LoggerFactory.getLogger(MsgSendListenerImpl.class);
 
 	@Override
 	public void toAdmin(Message message, SessionID sessionID) {
