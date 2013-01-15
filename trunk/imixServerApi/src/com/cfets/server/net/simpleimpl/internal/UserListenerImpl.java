@@ -38,7 +38,7 @@ public class UserListenerImpl implements UserListener {
 		
 		// server do not need to fill username and password
 		// ignore
-		logger.info("fillLogon():客户端登录;sessionID={}", sessionID);
+		logger.info("fillLogon();sessionID={}", sessionID);
 	}
 
 	@Override
