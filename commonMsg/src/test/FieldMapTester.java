@@ -7,6 +7,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import com.mt.common.dynamicDataDef.CommonMsg;
 import com.mt.common.dynamicDataDef.FieldMap;
 import com.mt.common.dynamicDataDef.FieldMapUtil;
 import com.mt.common.xml.XMLUtil;
@@ -30,5 +31,18 @@ public class FieldMapTester {
 		Document doc = XMLUtil.createDocumentFromPath("/FieldMap.xml");
 		FieldMap fm1 = FieldMapUtil.createFieldMap(doc.getDocumentElement());
 		System.out.println(FieldMapUtil.createXMLString(fm1));
+		
+		String str = "<Page><PORTFOLIO>12083</PORTFOLIO><DATE>20130110</DATE></Page>";
+		CommonMsg commonMsg = new CommonMsg();
+		commonMsg.setMsgString(str);
+		if (commonMsg.isError()) {
+			System.err.println("error ...");
+		} else {
+			FieldMap fmap = commonMsg.getFieldMap();
+			System.out.println(fmap.getFieldCount());
+			System.out.println(fmap.getStringValue("PORTFOLIO"));
+		}
+		
+		
 	}
 }
