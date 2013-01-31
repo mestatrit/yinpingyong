@@ -13,9 +13,15 @@ import imix.field.SenderCompID;
 import imix.field.Username;
 
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.cfets.server.net.simpleimpl.ImixSessionInfo;
+import com.cfets.server.net.simpleimpl.RequestHandler;
+import com.cfets.server.net.simpleimpl.ResponseHandler;
 
 /**
  * 客户端登录验证监听器
@@ -27,9 +33,12 @@ public class UserListenerImpl implements UserListener {
 
 	private final static Logger logger = LoggerFactory.getLogger(UserListenerImpl.class);
 	
-	private Map<String, SessionID> user2session;
+	/**
+	 * 用户回话信息，长连接
+	 */
+	private Map<SessionID, ImixSessionInfo> user2session;
 	
-	public UserListenerImpl(Map<String, SessionID> user2session) {
+	public UserListenerImpl(Map<SessionID, ImixSessionInfo> user2session) {
 		this.user2session = user2session;
 	}
 	
@@ -60,22 +69,34 @@ public class UserListenerImpl implements UserListener {
 			
 			session.logout("Password is null.");
 		} else {
-			Integer cusNumber = Integer.valueOf(message.getHeader().getString(SenderCompID.FIELD));
 			
-			String userName = message.getString(Username.FIELD);
-			
-			String password = message.getString(Password.FIELD);
-			
-			String key = cusNumber + "<" + userName;
-			
-			SessionID sID = user2session.get(key);
-			
-			if (sID == null) {
+			if (user2session.get(sessionID) == null) {
 				
-				//TODO 验证用户身份
-				user2session.put(key, sessionID);
+				//TODO 1、验证用户身份
+				Integer cusNumber = Integer.valueOf(message.getHeader().getString(SenderCompID.FIELD));
+				String userName = message.getString(Username.FIELD);
+				String password = message.getString(Password.FIELD);
 				
-				logger.info("sessionID={},用户登陆成功.", sessionID.toString());
+				// 2、创建用户会话
+				ImixSessionInfo info = new ImixSessionInfo();
+				info.setSessionID(sessionID);
+				info.setRequestQueue(new MsgBlockingQueue());
+				info.setResponseQueue(new MsgBlockingQueue());
+				
+				ExecutorService responseThread = Executors.newSingleThreadExecutor();
+				info.setResponseThread(responseThread);
+				
+				ExecutorService requestThread = Executors.newSingleThreadExecutor();
+				info.setRequestThread(requestThread);
+				
+				// 3、启动响应和请求处理器
+				responseThread.submit(new ResponseHandler());
+				requestThread.submit(new RequestHandler());
+				
+				// 4、保存用户会话
+				user2session.put(sessionID, info);
+				
+				logger.info("用户={}登陆成功.", sessionID);
 				
 			} else {
 				

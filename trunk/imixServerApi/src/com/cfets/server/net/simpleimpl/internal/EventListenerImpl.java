@@ -8,6 +8,8 @@ import imix.core.api.EventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.cfets.server.net.simpleimpl.ImixSessionInfo;
+
 /**
  * 客户端登录、登出事件监听器
  * 
@@ -18,9 +20,9 @@ public class EventListenerImpl implements EventListener {
 
 	private final static Logger logger = LoggerFactory.getLogger(EventListenerImpl.class);
 	
-	private Map<String, SessionID> user2session;
+	private Map<SessionID, ImixSessionInfo> user2session;
 	
-	public EventListenerImpl(Map<String, SessionID> user2session) {
+	public EventListenerImpl(Map<SessionID, ImixSessionInfo> user2session) {
 		this.user2session = user2session;
 	}
 	
@@ -38,13 +40,11 @@ public class EventListenerImpl implements EventListener {
 	public void onLogout(SessionID sessionID) {
 		logger.info("onLogout(): 客户端登出，sessionId={}.", sessionID);
 		
-		String key = sessionID.getTargetCompID() + "<" + sessionID.getTargetSubID();
+		ImixSessionInfo sessionInfo = user2session.get(sessionID);
 		
-		SessionID sID = user2session.get(key);
-		
-		if (sID != null) {
+		if (sessionInfo != null) {
 			
-			user2session.remove(key);
+			user2session.remove(sessionID);
 			
 			logger.info("sessionID={},客户端已经移除！", sessionID.toString());
 		} else {
