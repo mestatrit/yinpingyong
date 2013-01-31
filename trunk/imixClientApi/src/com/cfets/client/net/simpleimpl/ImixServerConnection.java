@@ -7,6 +7,7 @@ import imix.client.core.ImixSession;
 import imix.client.core.ImixSessionExistingException;
 import imix.field.FreeMsgID;
 import imix.field.FreeMsgType;
+import imix.field.Text;
 import imix.imix10.FreeFormatMessage;
 
 import java.io.BufferedInputStream;
@@ -73,9 +74,22 @@ public class ImixServerConnection {
 			//发送请求
 			FreeFormatMessage freeFormatMessage = new FreeFormatMessage();
 			FreeMsgID msgId = new FreeMsgID("0001");
-			FreeMsgType fid = new FreeMsgType("F001");
+			
+			/*FreeMsgType fid = new FreeMsgType("C33B");
+			Text text = new Text("<Page><DATE>20130122</DATE></Page>");*/
+			
+			FreeMsgType fid = new FreeMsgType("C33C");
+			Text text = new Text("<Page><INCLUDEFEE>1</INCLUDEFEE>" +
+										"<RETURNTYPE>0</RETURNTYPE>" +
+										"<STARTDATE>20121211</STARTDATE>" +
+										"<ENDDATE>20130111</ENDDATE>" +
+										"<DayEnd>0</DayEnd>" +
+										"<MarkToMarketPrice>market</MarkToMarketPrice>" +
+										"<RepoType>0</RepoType>" +
+								 "</Page>");
 			freeFormatMessage.set(msgId);
 			freeFormatMessage.set(fid);
+			freeFormatMessage.set(text);
 			connection.requestRemoteService(freeFormatMessage);
 			
 		} catch (ConfigError e) {
