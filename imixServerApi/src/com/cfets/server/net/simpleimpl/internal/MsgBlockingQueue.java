@@ -10,17 +10,56 @@ import java.util.concurrent.LinkedBlockingQueue;
  * @date:2013-1-10
  */
 public class MsgBlockingQueue {
+	
+	/**
+	 * 链表结构的阻塞式队列
+	 */
+	private BlockingQueue<ImixMessage> bq = new LinkedBlockingQueue<ImixMessage>();
 
-	private BlockingQueue<MessageInfo> bq = new LinkedBlockingQueue<MessageInfo>();
-
-	public void putMsgInfo(MessageInfo msg) throws InterruptedException {
+	/**
+	 * 阻塞式保存消息
+	 * 
+	 * @param msg
+	 * @throws InterruptedException
+	 */
+	public void putImixMessage(ImixMessage msg) throws InterruptedException {
 		bq.put(msg);
 	}
-
-	public MessageInfo getMsgInfo() throws InterruptedException {
+	
+	/**
+	 * 非阻塞式保存消息
+	 * 
+	 * @param msg
+	 * @return 保存成功或是失败
+	 */
+	public boolean offerImixMessage(ImixMessage msg) {
+		return bq.offer(msg);
+	}
+	
+	/**
+	 * 阻塞式读取消息
+	 * 
+	 * @return
+	 * @throws InterruptedException
+	 */
+	public ImixMessage takeImixMessage() throws InterruptedException {
 		return bq.take();
 	}
-
+	
+	/**
+	 * 非阻塞式读取消息
+	 * 
+	 * @return 如果队列为空，返回null
+	 */
+	public ImixMessage pollImixMessage() {
+		return bq.poll();
+	}
+	
+	/**
+	 * 队列当前深度
+	 * 
+	 * @return
+	 */
 	public int size() {
 		return bq.size();
 	}
