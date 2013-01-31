@@ -90,6 +90,9 @@ public class ImixServerConnection {
 			freeFormatMessage.set(msgId);
 			freeFormatMessage.set(fid);
 			freeFormatMessage.set(text);
+			
+			freeFormatMessage.toString();
+			
 			connection.requestRemoteService(freeFormatMessage);
 			
 		} catch (ConfigError e) {
