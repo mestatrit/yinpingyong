@@ -48,10 +48,33 @@ java.io.OutPutStram
 1、javax.swing.JEditorPanel
 
 九、客户端Socket	
+	1、连接 Socket(ip,port,InetAddress,lport);
+	2、读 socket.getInputStream();
+	3、写 socket.getOutputStream();
+	4、关闭 socket.close();
+
 十、服务端Socket
+	1、连接
+	2、读
+	3、写
+	4、关闭
+	5、绑定端口 ServerSocket(port,logback,InetAddress);
+	6、接收客户端连接 Socket socket = serverSocket.accept();
+	7、监听数据 
+
 十一、安全Socket
+
 十二、非阻塞IO
+	1、通道
+		SocketChannel();ServerSocketChannel();
+	2、缓存
+	3、选择器
+	
 十三、UDP和socket
+	1、DatagramerSocket
+	2、DatagramerPacket
+	3、DatagramerChannel
+	
 十四、组播
 十五、URLConnection
 十六、协议处理器
