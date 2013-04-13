@@ -15,9 +15,10 @@ public class AddTest {
 		for (int index =0;index < 10;index++) {
 			count = count ++;
 		}
-		
+		// 结果是0
 		System.out.println(count);
 		
+		System.out.println(Integer.parseInt("12340000004433"));
 	}
 
 }
