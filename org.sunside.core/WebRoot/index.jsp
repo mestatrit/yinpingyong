@@ -36,22 +36,22 @@
 	alert(temp5.name); */
 	
 	/*JavaScript内建对象使用*/
-	var array = new Array();//定义一个数组，调用Array对象
+	/* var array = new Array();//定义一个数组，调用Array对象
 	array[0] = "123";
 	array[1] = 123;
-	array[2] = true;
+	array[2] = true; */
 	
-	var num = Math.round(7.516);//四舍五入函数
-	alert(num);
+	/* var num = Math.round(7.516);//四舍五入函数
+	alert(num); */
 	
-	var currentDate = new Date();//调用日期对象
+	/* var currentDate = new Date();//调用日期对象
 	alert(currentDate);
-	alert(currentDate.getDate());
+	alert(currentDate.getDate()); */
 </script>
 
 </head>
 <body>
-	
+	<a href="pic.jsp">JS图片库</a>
 </body>
 </html>
 
