@@ -34,7 +34,7 @@ public class CipherTest2 {
 	 */
 	public static void main(String[] args) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
 		
-		//1、创建化密钥对生成器：DSA加密算法（非对称加密算法）
+		//1、创建化密钥对生成器：RSA加密算法（非对称加密算法）
 		KeyPairGenerator keypg = KeyPairGenerator.getInstance("RSA");
 		
 		//初始化密钥对生成器
